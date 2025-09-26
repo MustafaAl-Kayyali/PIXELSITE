@@ -21,6 +21,77 @@ const FALLBACK_DATA = [
     date_recorded: "2024-01-01",
   },
   {
+    disease_name: "Rhizoctonia Stem Canker and Black Scurf",
+    scientific_name: "Rhizoctonia solani",
+    type: "Fungal",
+    commonality: "Common",
+    affected_crops: ["Potatoes"],
+    symptoms: [
+      "Stem cankers (brown to black lesions on the stem)",
+      "Black scurf on tubers (small, black, hard masses)",
+    ],
+    prevention: [
+      "Planting certified disease-free seed potatoes",
+      "Crop rotation",
+      "Proper soil drainage",
+    ],
+    treatment_options: [
+      "Fungicide seed treatments",
+      "Biological control agents",
+    ],
+    date_recorded: "2024-02-15",
+  },
+  {
+    disease_name: "Crown Gall",
+    scientific_name: "Agrobacterium tumefaciens",
+    type: "Bacterial",
+    commonality: "Common",
+    affected_crops: [
+      "Almond",
+      "Apple",
+      "Apricot",
+      "Cherry",
+      "Peach",
+      "Grapevine",
+    ],
+    symptoms: [
+      "Galls (tumor-like growths) on the roots and lower stems",
+      "Stunted growth",
+      "Reduced plant vigor",
+    ],
+    prevention: [
+      "Purchasing disease-free nursery stock",
+      "Avoiding mechanical injury to the plant roots and crown",
+    ],
+    treatment_options: [
+      "Biological control using non-pathogenic bacteria",
+      "Pruning and destroying galls",
+    ],
+    date_recorded: "2024-04-10",
+  },
+  {
+    disease_name: "Soft Rot",
+    scientific_name: "Pectobacterium carotovorum",
+    type: "Bacterial",
+    commonality: "Common",
+    affected_crops: ["Potatoes", "Cucumbers", "Cabbage", "Tomatoes"],
+    symptoms: [
+      "Water-soaked lesions on the plant tissue",
+      "Soft, mushy rot with a foul smell",
+      "Stem and root decay",
+    ],
+    prevention: [
+      "Avoiding overhead irrigation",
+      "Improving air circulation",
+      "Proper handling to avoid physical damage",
+    ],
+    treatment_options: [
+      "No effective chemical treatment",
+      "Focus on prevention and sanitation",
+    ],
+    date_recorded: "2024-06-25",
+  },
+  {
     disease_name: "Tomato Speck",
     scientific_name: "Pseudomonas syringae pv. tomato",
     type: "Bacterial",
@@ -43,14 +114,14 @@ const FALLBACK_DATA = [
 
 const DISEASES_KEY = "plantDiseasesData";
 
-// --- Function to display data on the page (English Labels) ---
+// to display data on the page
 function displayDiseases(data) {
   const diseasesContainer = document.getElementById("diseases-container");
 
   if (Array.isArray(data) && diseasesContainer) {
     diseasesContainer.innerHTML = data
       .map((disease) => {
-        // Date formatting (using 'en-US' locale)
+        // to display the date
         const dateDisplay = disease.date_recorded
           ? `<p><strong>Recorded Date:</strong> ${new Date(
               disease.date_recorded
@@ -61,22 +132,15 @@ function displayDiseases(data) {
             })}</p>`
           : "";
 
-        // Handing array fields and joining them into strings
+        // to display the scientific name
         const scientificName = Array.isArray(disease.scientific_name)
           ? disease.scientific_name.join(", ")
           : disease.scientific_name;
+
+        // to display the affected crops
         const affectedCrops = Array.isArray(disease.affected_crops)
           ? disease.affected_crops.join(", ")
           : disease.affected_crops;
-        const symptoms = Array.isArray(disease.symptoms)
-          ? disease.symptoms.join(", ")
-          : disease.symptoms;
-        const prevention = Array.isArray(disease.prevention)
-          ? disease.prevention.join(". ")
-          : disease.prevention;
-        const treatmentOptions = Array.isArray(disease.treatment_options)
-          ? disease.treatment_options.join(". ")
-          : disease.treatment_options;
 
         return `<div class="disease">
           <h3>${disease.disease_name}</h3>
@@ -85,9 +149,18 @@ function displayDiseases(data) {
           <p><strong>Type:</strong> ${disease.type}</p>
           <p><strong>Commonality:</strong> ${disease.commonality}</p>
           <p><strong>Affected Crops:</strong> ${affectedCrops}</p>
-          <p><strong>Symptoms:</strong> ${symptoms}</p>
-          <p><strong>Prevention:</strong> ${prevention}</p>
-          <p><strong>Treatment Options:</strong> ${treatmentOptions}</p>
+          <p><strong>Symptoms:</strong></p>
+          <ul>${disease.symptoms
+            .map((symptom) => `<li>${symptom}</li>`)
+            .join("")}</ul>
+          <p><strong>Prevention:</strong></p>
+          <ul>${disease.prevention
+            .map((item) => `<li>${item}</li>`)
+            .join("")}</ul>
+          <p><strong>Treatment Options:</strong></p>
+          <ul>${disease.treatment_options
+            .map((option) => `<li>${option}</li>`)
+            .join("")}</ul>
         </div>`;
       })
       .join("");
@@ -138,7 +211,6 @@ function loadDiseasesData() {
 
       const diseasesContainer = document.getElementById("diseases-container");
       if (diseasesContainer) {
-        // Translate error messages
         const errorMessage = error.message.includes("Failed to fetch")
           ? "Connection failed. Displaying cached/temporary data."
           : `An error occurred: ${error.message}`;
