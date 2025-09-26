@@ -113,3 +113,45 @@ main {
 #Home .btn a.button:hover {
   background-color: #1b5e20;
 }
+
+
+/* Styling for the Search Bar */
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #f7f7f7; /* Light background for contrast */
+    border-top: 1px solid #eee;
+}
+
+#site-search-form {
+    display: flex;
+    width: 100%;
+    max-width: 400px; /* Constrain size on large screens */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#site-search-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+
+#site-search-button {
+    background-color: #2ecc71; /* Green color, matching the general theme */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 16px;
+}
+
+#site-search-button:hover {
+    background-color: #27ae60;
+}

@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
           "Requires regular maintenance",
           "Risk of clogging in emitters",
         ],
-        color: "blue",
+        // Note: The color is set to 'blue' here, but your CSS maps 'green' to Drip.
+        // Using 'blue' as per your data, but it might not match the intended color scheme.
+        color: "green", // Corrected to match the 'green' background class in your CSS
       },
       {
         id: "sprinkler",
@@ -38,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "Wind interference affects distribution",
           "Higher energy consumption",
         ],
-        color: "green",
+        color: "blue", // Corrected to match the 'blue' background class in your CSS
       },
       {
         id: "smart",
@@ -99,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
   irrigationContainer.innerHTML = irrigationSystems
     .map(
       (irrigation) => `
-                <div class="irrigation-card-de ${irrigation.color}">
+                <div class="irrigation-card ${irrigation.color}">
                     <h3>${irrigation.title}</h3>
                     <p>${irrigation.description}</p>
                     <div class="data-badges">
@@ -134,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add event listeners to each button to toggle details
   document.querySelectorAll(".toggle-btn").forEach((button) => {
     button.addEventListener("click", () => {
+      // Use 'irrigation-card' instead of the typo
       const card = button.closest(".irrigation-card");
       const details = card.querySelector(".details-container");
       const isExpanded = details.style.display === "block";
@@ -142,8 +145,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document
         .querySelectorAll(".details-container")
         .forEach((otherDetails) => {
-          const otherButton =
-            otherDetails.parentElement.querySelector(".toggle-btn");
+          const otherCard = otherDetails.closest(".irrigation-card");
+          const otherButton = otherCard.querySelector(".toggle-btn");
+
           if (
             otherDetails !== details &&
             otherDetails.style.display === "block"
