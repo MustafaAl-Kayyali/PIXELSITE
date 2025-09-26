@@ -4,238 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style1.css">
     <title>Jordan's Food Security</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="styles/statistics.css">
+    <link rel="stylesheet" href="styles/irrigation.css">
+    <link rel="stylesheet" href="styles/crops.css">
+    <link rel="stylesheet" href="styles/plants.css">
+    <link rel="stylesheet" href="styles/technology.css">
+    <link rel="stylesheet" href="styles/diseases.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="#Home" title="Go to Home section">Home</a></li>
-                <li><a href="#">Statistics</a></li>
-                <li><a href="#irrigation" title="Go to Irrigation section">Irrigation</a></li>
-                <li><a href="#">Crops</a></li>
-                <li><a href="#">plants</a></li>
-                <li><a href="#technology" title="Go to Technology section">Technology</a></li>
-                <li><a href="#">Diseases</a></li>
+                <li><a href="pages/home.html" title="Go to Home section">Home</a></li>
+                <li><a href="pages/statistics.html">Statistics</a></li>
+                <li><a href="pages/irrigation.html" title="Go to Irrigation section">Irrigation</a></li>
+                <li><a href="pages/crops.html">Crops</a></li>
+                <li><a href="pages/plants.html">Plants</a></li>
+                <li><a href="pages/technology.html" title="Go to Technology section">Technology</a></li>
+                <li><a href="pages/diseases.html">Diseases</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section id="Home">
-            <img src="https://images.alborsaanews.com/2023/05/cPMzGO9m-1684929988_935_119824_2021_4_6_13_23_1_916-jpg.webp"
-                alt="A landscape view of agricultural farms in Jordan.">
-            <div class="info">
-                <h1>Jordan's Food Security<span> Challenge &amp; Innovation</span>
-                </h1>
-                <p>Explore the current state of Jordan's agriculture, from traditional farming methods to cutting-edge
-                    vertical farming technologies. Discover how innovation is addressing food security challenges in the
-                    Kingdom.
-                </p>
-                <div class="cards">
-                    <div class="card-items" id="agricultural-growth">
-                        <h4>Agricultural Growth</h4>
-                        <p>Sustainable farming initiatives</p>
-                    </div>
-                    <div class="card-items" id="water-management">
-                        <h4>Water Management</h4>
-                        <p>Advanced irrigation systems</p>
-                    </div>
-                    <div class="card-items" id="crop-innovation">
-                        <h4>Crop innovation</h4>
-                        <p>Diverse agricultural products</p>
-                    </div>
-                </div>
-                <div class="btn">
-                    <a href="#irrigation" class="button">Learn More</a>
-                </div>
-            </div>
-        </section>
-
-
-        <section id="irrigation">
-            <div class="container">
-                <h6>Water Management</h6>
-                <h3>Irrigation System in Jordan</h3>
-                <p>Explore the various irrigation technologies used across Jordan's agricultural sector, from
-                    traditional methods to cutting-edge smart irrigation systems.</p>
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1669196740673-2f19424fc1f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpcnJpZ2F0aW9uJTIwc3lzdGVtJTIwZmFybWluZ3xlbnwxfHx8fDE3NTg3ODQ5Nzh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                        alt="A detailed image of a modern irrigation system in a farm.">
-                </div>
-            </div>
-            <div class="irrigation-container">
-            </div>
-            <div class="container-card">
-                <h3>Water Conservation Impact</h3>
-                <p>Modern irrigation systems in Jordan have improved water efficiency by up to 40%, helping address the
-                    kingdom's water scarcity challenges while maintaining agricultural productivity.</p>
-                <div class="card-list">
-                    <div class="card-item">
-                        <h4>40%</h4>
-                        <p>Water Savings</p>
-                    </div>
-                    <div class="card-item">
-                        <h4>25%</h4>
-                        <p>Yield Increase</p>
-                    </div>
-                    <div class="card-item">
-                        <h4>60%</h4>
-                        <p>Smart Adoption</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="crops">
-            <div class="conterier-crops">
-                <h6>Agricultural Products</h6>
-                <h3>Jordan's Crop Diversity</h3>
-                <p>From traditional staples to emerging specialty crops, explore the diverse range of agricultural
-                    products
-                    cultivated across Jordan's varied landscapes.</p>
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1650012048722-c81295ccbe79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqb3JkYW5pYW4lMjBjcm9wcyUyMHZlZ2V0YWJsZXMlMjBmcnVpdHN8ZW58MXx8fHwxNzU4Nzg1MDkzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                        alt="frout and vegitables">
-                </div>
-                <ul class="tab-list">
-                    <li id="available-crops">Available Crops</li>
-                    <li id="rare-crops">Rare Crops</li>
-                </ul>
-                <div id="available-crops-container" class="cards-container">
-                    <div class="card-details">
-                    </div>
-                </div>
-                <div id="rare-crops-container" class="cards-container" style="display:none;">
-                    <div class="card-detail">
-                    </div>
-                </div>
-                <div class="details">
-                    <h3>Crop Production Overview</h3>
-                    <div class="detail">
-                        <h4>150+</h4>
-                        <p>Crop Varieties</p>
-                    </div>
-                    <div class="detail">
-                        <h4>85%</h4>
-                        <p>Food Self-Sufficiency</p>
-                    </div>
-                    <div class="detail">
-                        <h4>12</h4>
-                        <p>Export Crops</p>
-                    </div>
-                </div>
-                <div class="detail">
-                    <h4>₹2.1B</h4>
-                    <p>Agricultural GDP</p>
-                </div>
-            </div>
-        </section>
-        <section id="plants">
-            <div class="gruop">
-                <h6>Plant Biodiversity</h6>
-                <h3>Jordan's Native Flora</h3>
-                <p>Discover the rich diversity of native plants found across Jordan's ecosystems, from common herbs to
-                    rare endemic species
-                    requiring conservation efforts.</p>
-            </div>
-            <ul class="tab-list">
-                <li id="common-plants">Common Plants</li>
-                <li id="rare-plants">Rare &amp; Protected Plants</li>
-            </ul>
-
-            <div class="container-plants">
-                <div id="common-plants-container" class="plants-container">
-                </div>
-                <div id="rare-plants-container" class="plants-containers" style="display: none;">
-                </div>
-            </div>
-        </section>
-
-
-
-        <section id="technology">
-            <div class="container-technology">
-                <h6>Technology &amp; Innovation</h6>
-                <h3>Technology of Irrigation System in Jordan</h3>
-                <p>Explore the various irrigation technologies used across Jordan's agricultural sector, from
-                    traditional methods to cutting-edge smart irrigation systems.</p>
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1737986573440-39afcb580d95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2ZXJ0aWNhbCUyMGZhcm1pbmclMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc1ODc4NDk3NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                        alt="An image of a vertical farming setup, showcasing modern technology.">
-                </div>
-                <div class="container-technology-cards">
-                    <div class="technology-card">
-                        <h3>Technology Impact</h3>
-                        <p>Measurable improvements across Jordan's agricultural sector</p>
-                        <div class="tec-card">
-                            <div class="card-info">
-                                <h4>45%</h4>
-                                <p>Efficiency Increase</p>
-                            </div>
-                        </div>
-                        <div class="tec-card">
-                            <div class="card-info">
-                                <h4>30%</h4>
-                                <p>Water Savings</p>
-                            </div>
-                        </div>
-                        <div class="tec-card">
-                            <div class="card-info">
-                                <h4>25%</h4>
-                                <p>Yield Improvement</p>
-                            </div>
-                        </div>
-                        <div class="tec-card">
-                            <div class="card-info">
-                                <h4>60%</h4>
-                                <p>Cost Reduction</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="technology-card">
-                        <div class="cards-details">
-                            <h3>Future Outlook</h3>
-                            <p>Planned expansions and new technology adoptions</p>
-                        </div>
-                        <ul class="future-outlook">
-                            <li class="future-outlook-item">
-                                <span class="future-outlook-text">Smart Farm Networks</span>
-                                <span class="future-outlook-year">2025</span>
-                            </li>
-                            <li class="future-outlook-item">
-                                <span class="future-outlook-text">AI-Powered Analytics</span>
-                                <span class="future-outlook-year">2026</span>
-                            </li>
-                            <li class="future-outlook-item">
-                                <span class="future-outlook-text">Drone Integration</span>
-                                <span class="future-outlook-year">2027</span>
-                            </li>
-                            <li class="future-outlook-item">
-                                <span class="future-outlook-text">Blockchain Traceability</span>
-                                <span class="future-outlook-year">2028</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="diseases">
-            <div class="container-diseases">
-                <div class="gruop">
-                    <h6>Plant Diseases</h6>
-                    <h3>Jordan's Plant Diseases</h3>
-                    <p>Discover the diverse range of plant diseases found across Jordan's agricultural landscapes, from fungal infections to viral outbreaks.</p>
-                </div>
-                    
-            </div>
-        </section>
+    <main id="content-container">
     </main>
-    <script src="script.js"></script>
-    <script src="index.js"></script>
-    <script src="cards.js"></script>
-    <script src="plants.js"></script>
+
+    <script src="app.js"></script>
 </body>
 
 </html>

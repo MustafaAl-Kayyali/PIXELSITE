@@ -1,0 +1,169 @@
+#diseases {
+    /* Centering the main content block */
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#diseases .container-diseases {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+    /* Increased space below intro */
+}
+
+#diseases h6 {
+    color: #2e7d32;
+    font-size: 1em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+#diseases h3 {
+    font-size: 2em;
+    color: #333;
+    margin: 10px 0;
+}
+
+#diseases p {
+    color: #666;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+}
+
+/* Disease Cards Grid Layout */
+#diseases .diseases-container {
+    display: grid;
+    /* Responsive columns: min width of 300px, max to fill available space */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Individual Disease Card Styling */
+.disease {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.disease:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.disease h3 {
+    color: #b71c1c;
+    /* Red for disease name */
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.disease p {
+    margin: 5px 0;
+    color: #333;
+    max-width: none;
+}
+
+.disease ul {
+    list-style: disc;
+    margin: 5px 0 15px 20px;
+    padding: 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.disease ul li {
+    margin-bottom: 3px;
+}
+
+#diseases {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#diseases .container-diseases {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#diseases h6 {
+    color: #2e7d32;
+    font-size: 1em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+#diseases h3 {
+    font-size: 2em;
+    color: #333;
+    margin: 10px 0;
+}
+
+#diseases p {
+    color: #666;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+}
+
+#diseases .diseases-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.disease {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.disease:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.disease h3 {
+    color: #b71c1c;
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.disease p {
+    margin: 5px 0;
+    color: #333;
+    max-width: none;
+}
+
+.disease ul {
+    list-style: disc;
+    margin: 5px 0 15px 20px;
+    padding: 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.disease ul li {
+    margin-bottom: 3px;
+}
