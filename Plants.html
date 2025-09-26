@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Styles/plants.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" title="Go to Home section">Home</a></li>
+                <li><a href="Statistics.html">Statistics</a></li>
+                <li><a href="Irrigation.html" title="Go to Irrigation section">Irrigation</a></li>
+                <li><a href="Crops.html">Crops</a></li>
+                <li><a href="Plants.html">Plants</a></li>
+                <li><a href="Technology.html" title="Go to Technology section">Technology</a></li>
+                <li><a href="Diseases.html">Diseases</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content-container">
+                <section id="plants">
+                    <div class="container-main">
+                        <h6>Plant Biodiversity</h6>
+                        <h3>Jordan's Native Flora</h3>
+                        <p>Discover the rich diversity of native plants found across Jordan's ecosystems, from common herbs to
+                            rare endemic species requiring conservation efforts.</p>
+
+                        <ul class="tab-list">
+                            <li id="common-plants-btn" class="active">Common Plants</li>
+                            <li id="rare-plants-btn">Rare &amp; Protected Plants</li>
+                        </ul>
+
+                        <div id="common-plants-container" class="plants-container">
+                        </div>
+                        <div id="rare-plants-container" class="plants-container" style="display: none;">
+                        </div>
+                    </div>
+                </section>
+
+    </main>
+ <script src="Scripts/plants.js"></script>
+</body>
+</html>
