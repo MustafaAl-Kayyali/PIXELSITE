@@ -97,7 +97,6 @@ function displayDiseases(data) {
   }
 }
 
-// --- Main function to load data (Logic remains the same) ---
 function loadDiseasesData() {
   const cachedData = localStorage.getItem(DISEASES_KEY);
 
@@ -135,7 +134,6 @@ function loadDiseasesData() {
     .catch((error) => {
       console.error("Fetch failed. Using fallback data:", error.message);
 
-      // Use the English FALLBACK_DATA on fetch failure
       displayDiseases(FALLBACK_DATA);
 
       const diseasesContainer = document.getElementById("diseases-container");
