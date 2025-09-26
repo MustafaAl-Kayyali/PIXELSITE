@@ -28,21 +28,24 @@ body {
     margin: 0 auto;
 }
 
-/* --- Irrigation Cards Grid Layout --- */
+/* ---------------------------------------------------------------- */
+/* --- 1. IRRIGATION SYSTEM CARDS (Drip, Sprinkler, etc.) STYLES --- */
+/* ---------------------------------------------------------------- */
+
+/* --- Grid Layout (Ensures two cards per row on large screens) --- */
 .irrigation-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    /* This forces exactly two equal-width columns */
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
 }
-
-/* --- Individual Card Styling (General) --- */
+/* --- Individual Card Styling (Base) --- */
 .irrigation-card {
     background-color: white;
     border-radius: 12px;
     padding: 30px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     border: 1px solid transparent;
-    /* Base border */
     transition: all 0.3s ease;
 }
 
@@ -61,33 +64,53 @@ body {
     margin: 5px 0;
 }
 
-/* Efficiency and Coverage Badges */
-.irrigation-card p strong {
-    font-weight: bold;
-    color: #1a5620;
+/* --- Data Badge Styling (For dynamically generated cards) --- */
+.data-badges {
+    display: flex;
+    justify-content: center;
+    /* Center the badge group */
+    gap: 25px;
+    /* Spacing between Efficiency and Coverage badges */
+    margin-top: 10px;
+    margin-bottom: 15px;
+    /* Space above the toggle button */
+    padding: 0 10px;
+    flex-wrap: wrap;
+    font-size: 1em;
 }
 
-/* --- Color Themeing (For Card Background and Icons) --- */
+.badge {
+    font-weight: normal;
+    color: #555;
+}
+
+.badge strong {
+    font-weight: bold;
+    /* Dark green color for emphasis, consistent with original design */
+    color: #1a5620;
+    margin-right: 3px;
+}
+
+/* --- Color Themeing (Backgrounds for individual cards) --- */
 .irrigation-card.blue {
     background-color: #e3f2fd;
+    /* Sprinkler */
 }
 
-/* Drip */
 .irrigation-card.green {
     background-color: #e8f5e9;
+    /* Drip */
 }
 
-/* Sprinkler */
 .irrigation-card.purple {
     background-color: #f3e5f5;
+    /* Smart */
 }
 
-/* Smart */
 .irrigation-card.amber {
     background-color: #fff8e1;
+    /* Surface */
 }
-
-/* Surface */
 
 /* Style for the "View/Hide Details" button */
 .toggle-btn {
@@ -158,9 +181,9 @@ body {
     border-radius: 12px;
 }
 
-/* ========================================================= */
-/* --- STYLES for Water Conservation Impact Banner (Matching Image) --- */
-/* ========================================================= */
+/* ---------------------------------------------------------------- */
+/* --- 2. WATER CONSERVATION IMPACT BANNER (Gradient Section) STYLES --- */
+/* ---------------------------------------------------------------- */
 
 /* Apply the gradient and general style to the main container */
 .irrigation-cards {
@@ -173,7 +196,6 @@ body {
     margin-top: 40px;
     margin-bottom: 40px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    /* Overriding existing flex properties for better layout */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -216,9 +238,9 @@ body {
     gap: 20px;
 }
 
-/* Individual metric card style (40%, 25%, 60%) */
-.irrigation-card {
-    /* Overriding existing white background/shadow */
+/* Individual metric style within the banner */
+.irrigation-card-details .irrigation-card {
+    /* **CRITICAL:** Override the general .irrigation-card styles here to make them transparent for the banner */
     background-color: transparent !important;
     box-shadow: none !important;
     padding: 0;
@@ -230,7 +252,7 @@ body {
     gap: 5px;
 }
 
-.irrigation-card h4 {
+.irrigation-card-details .irrigation-card h4 {
     font-size: 3.5em;
     font-weight: 300;
     line-height: 1.2;
@@ -238,7 +260,7 @@ body {
     color: white;
 }
 
-.irrigation-card p {
+.irrigation-card-details .irrigation-card p {
     font-size: 1.2em;
     font-weight: normal;
     margin: 0;
@@ -253,8 +275,7 @@ body {
         gap: 40px;
     }
 
-    .irrigation-card h4 {
+    .irrigation-card-details .irrigation-card h4 {
         font-size: 3em;
     }
 }
-
