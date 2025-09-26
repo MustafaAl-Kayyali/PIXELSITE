@@ -1,5 +1,6 @@
+/* --- 1. Main Section and Header Styling --- */
 #diseases {
-    /* Centering the main content block */
+    /* Centering the main content block within the viewport */
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
@@ -13,11 +14,12 @@
     padding: 24px;
     text-align: center;
     margin-bottom: 30px;
-    /* Increased space below intro */
+    /* Space below the introductory block */
 }
 
 #diseases h6 {
     color: #2e7d32;
+    /* Green accent for category */
     font-size: 1em;
     text-transform: uppercase;
     margin: 0;
@@ -36,134 +38,87 @@
     margin: 0 auto 20px auto;
 }
 
-/* Disease Cards Grid Layout */
-#diseases .diseases-container {
+/* --- 2. Disease Cards Grid Layout --- */
+.diseases-container {
     display: grid;
-    /* Responsive columns: min width of 300px, max to fill available space */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    /* Responsive grid with a minimum card width of 350px, adjusted from 300px for content space */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    /* Slightly increased gap for visual breathing room */
 }
 
-/* Individual Disease Card Styling */
-.disease {
+/* --- 3. Individual Disease Card Styling (Using .disease-card for consistency) --- */
+.disease-card {
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     text-align: left;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.disease:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+.disease-card:hover {
+    transform: translateY(-5px);
+    /* Slightly more prominent lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.disease h3 {
+.disease-card h3 {
     color: #b71c1c;
-    /* Red for disease name */
-    font-size: 1.5em;
+    /* Dark Red for disease name (High impact) */
+    font-size: 1.6em;
+    /* Slightly larger title */
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #f3f3f3;
 }
 
-.disease p {
-    margin: 5px 0;
-    color: #333;
-    max-width: none;
-}
-
-.disease ul {
-    list-style: disc;
-    margin: 5px 0 15px 20px;
-    padding: 0;
-    font-size: 0.9em;
-    color: #666;
-}
-
-.disease ul li {
-    margin-bottom: 3px;
-}
-
-#diseases {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-#diseases .container-diseases {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    padding: 24px;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-#diseases h6 {
+.disease-card h4 {
     color: #2e7d32;
-    font-size: 1em;
-    text-transform: uppercase;
-    margin: 0;
+    /* Green for subheadings (Symptoms, Prevention, Treatment) */
+    font-size: 1.1em;
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
-#diseases h3 {
-    font-size: 2em;
-    color: #333;
-    margin: 10px 0;
-}
-
-#diseases p {
-    color: #666;
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0 auto 20px auto;
-}
-
-#diseases .diseases-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.disease {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    text-align: left;
-    transition: transform 0.3s ease;
-}
-
-.disease:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-.disease h3 {
-    color: #b71c1c;
-    font-size: 1.5em;
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.disease p {
+.disease-card p {
     margin: 5px 0;
     color: #333;
     max-width: none;
+    line-height: 1.4;
 }
 
-.disease ul {
+.disease-card p strong {
+    color: #1a5620;
+    /* Dark green for labels */
+}
+
+/* List Styling (Symptoms, Prevention, Treatment) */
+.disease-card ul {
     list-style: disc;
+    /* Keep default list style */
     margin: 5px 0 15px 20px;
     padding: 0;
-    font-size: 0.9em;
-    color: #666;
+    font-size: 0.95em;
+    color: #444;
 }
 
-.disease ul li {
-    margin-bottom: 3px;
+.disease-card ul li {
+    margin-bottom: 4px;
+}
+
+/* Style for the Economic Impact paragraph */
+.disease-card .impact {
+    font-weight: bold;
+    background-color: #fffde7;
+    /* Very light yellow background */
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 20px;
+    border-left: 4px solid #fbc02d;
+    /* Yellow border accent */
+    color: #795548;
+    /* Dark brown text for impact */
 }
