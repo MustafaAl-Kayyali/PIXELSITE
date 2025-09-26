@@ -1,223 +1,479 @@
-.metrics-container{
+/* CSS Variables for Easy Theme Management */
+:root {
+    --primary-green: #2e7d32;
+    --primary-green-light: #81c784;
+    --bg-light: #ffffff;
+    --bg-dark: #2d2d2d;
+    --text-primary-light: #333;
+    --text-primary-dark: #e0e0e0;
+    --text-secondary-light: #666;
+    --text-secondary-dark: #b0b0b0;
+    --border-light: #e0e0e0;
+    --border-dark: #555;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+}
+
+/* Metrics Container */
+.metrics-container {
     max-width: 1200px;
     margin: 15px auto;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 20px;
     display: flex;
     flex-direction: row;
     gap: 24px;
-    padding: 0 20px 10px 20px;
+    transition: all 0.3s ease;
 }
 
-.metric-card{
+/* Metric Cards */
+.metric-card {
     flex-shrink: 0;
     width: 280px;
-    background-color: white;
+    background-color: var(--bg-light);
     border-radius: 12px;
     padding: 24px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 10px var(--shadow-light);
     display: flex;
     flex-direction: column;
     position: relative;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
 }
-  .metric-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  }
 
-  /* --- Icon & Trend Container --- */
-  .header-section {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 20px;
-  }
+.metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
 
-  /* --- Icon Circle Styling --- */
-  .icon-wrapper {
-      width: 50px;
-      height: 50px;
-      border-radius: 10px;
-      /* Slight rounding on the wrapper */
-      background-color: #f0fff4;
-      /* Very light green/mint */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      /* Applying specific colors based on icon type (matching image) */
-  }
+/* Header Section */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
 
-  /* Icon Colors */
-  .icon-users .icon-wrapper {
-      background-color: #f7ebfd;
-  }
+/* Icon Wrapper */
+.icon-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #f0fff4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
 
-  /* Light Purple */
-  .icon-users svg {
-      color: #8e24aa;
-  }
+/* Icon Colors - Light Mode */
+.icon-users .icon-wrapper {
+    background-color: #f7ebfd;
+}
 
-  /* Dark Purple */
+.icon-users svg {
+    color: #8e24aa;
+}
 
-  .icon-wheat .icon-wrapper {
-      background-color: #fffbe6;
-  }
+.icon-wheat .icon-wrapper {
+    background-color: #fffbe6;
+}
 
-  /* Light Yellow */
-  .icon-wheat svg {
-      color: #ff9800;
-  }
+.icon-wheat svg {
+    color: #ff9800;
+}
 
-  /* Dark Orange */
+.icon-trending-up .icon-wrapper {
+    background-color: #e1f5fe;
+}
 
-  .icon-trending-up .icon-wrapper {
-      background-color: #e1f5fe;
-  }
+.icon-trending-up svg {
+    color: #03a9f4;
+}
 
-  /* Light Blue */
-  .icon-trending-up svg {
-      color: #03a9f4;
-  }
+.icon-calendar .icon-wrapper {
+    background-color: #e8f5e9;
+}
 
-  /* Medium Blue */
+.icon-calendar svg {
+    color: var(--primary-green);
+}
 
-  .icon-calendar .icon-wrapper {
-      background-color: #e8f5e9;
-  }
+/* Trend Badge */
+.trend-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
 
-  /* Light Green */
-  .icon-calendar svg {
-      color: var(--primary-green);
-  }
+.trend-positive {
+    background-color: #e8f5e9;
+    color: var(--primary-green);
+}
 
-  /* Primary Green */
+.trend-stable {
+    background-color: #f5f5f5;
+    color: #616161;
+}
 
+/* Value and Label Styling */
+.metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary-light);
+    margin-bottom: 4px;
+    transition: color 0.3s ease;
+}
 
-  /* --- Trend Badge Styling --- */
-  .trend-badge {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 4px 8px;
-      border-radius: 4px;
-      position: absolute;
-      /* Position relative to .metric-card */
-      top: 24px;
-      right: 24px;
-      line-height: 1;
-  }
+.metric-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary-light);
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
 
-  .trend-positive {
-      background-color: #e8f5e9;
-      /* Light Green */
-      color: var(--primary-green);
-      /* Dark Green */
-  }
+/* Statistics Section */
+#statistics .container {
+    background-color: var(--bg-light);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    max-width: 800px;
+    width: 100%;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
 
-  .trend-stable {
-      background-color: #f5f5f5;
-      /* Light Gray */
-      color: #616161;
-      /* Dark Gray */
-  }
+#statistics .header {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+}
 
-  /* --- Value and Label Styling --- */
-  .metric-value {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #333;
-      margin-bottom: 4px;
-  }
+#statistics .tab {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: var(--text-secondary-light);
+    transition: all 0.3s ease;
+}
 
-  .metric-label {
-      font-size: 0.95rem;
-      color: #666;
-      font-weight: 400;
-  }
+#statistics .tab.active {
+    background-color: #e8f5e9;
+    color: var(--primary-green);
+}
 
-  /* --- Statistics Section (Not currently used in HTML, but provided in the snippet) --- */
-  #statistics .container {
-      background-color: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      padding: 24px;
-      max-width: 800px;
-      width: 100%;
-  }
+#statistics .tab i {
+    margin-right: 8px;
+}
 
-  #statistics .header {
-      display: flex;
-      justify-content: space-around;
-      border-bottom: 1px solid #e0e0e0;
-      padding-bottom: 15px;
-      margin-bottom: 20px;
-  }
+#statistics .chart-section {
+    padding-bottom: 20px;
+}
 
-  #statistics .tab {
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-      color: #555;
-      transition: all 0.3s ease;
-  }
+#statistics .chart-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--text-primary-light);
+    margin-bottom: 25px;
+    transition: color 0.3s ease;
+}
 
-  #statistics .tab.active {
-      background-color: #e8f5e9;
-      color: #2e7d32;
-  }
+#statistics .chart-title i {
+    margin-right: 10px;
+    color: var(--text-secondary-light);
+    transition: color 0.3s ease;
+}
 
-  #statistics .tab i {
-      margin-right: 8px;
-  }
+#statistics .insights {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+    transition: border-color 0.3s ease;
+}
 
-  #statistics .chart-section {
-      padding-bottom: 20px;
-  }
+#statistics .insights h4 {
+    color: var(--primary-green);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
 
-  #statistics .chart-title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      color: #333;
-      margin-bottom: 25px;
-  }
+#statistics .insights ul {
+    list-style: none;
+    padding-left: 0;
+}
 
-  #statistics .chart-title i {
-      margin-right: 10px;
-      color: #555;
-  }
+#statistics .insights li {
+    position: relative;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    color: var(--text-secondary-light);
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
 
-  #statistics .insights {
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid #e0e0e0;
-  }
+#statistics .insights li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-green);
+    font-size: 20px;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
 
-  #statistics .insights h4 {
-      color: #2e7d32;
-      margin-bottom: 10px;
-  }
+/* ======================================
+   DARK MODE STYLES
+   ====================================== */
 
-  #statistics .insights ul {
-      list-style: none;
-      padding-left: 0;
-  }
+/* Dark Mode - Metric Cards */
+.dark-mode .metric-card {
+    background-color: var(--bg-dark);
+    box-shadow: 0 4px 10px var(--shadow-dark);
+    border: 1px solid var(--border-dark);
+}
 
-  #statistics .insights li {
-      position: relative;
-      margin-bottom: 8px;
-      padding-left: 20px;
-      color: #666;
-      line-height: 1.4;
-  }
+.dark-mode .metric-card:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
 
-  #statistics .insights li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: #2e7d32;
-      font-size: 20px;
-      line-height: 1;
-  }
+/* Dark Mode - Icon Wrappers with Darker Backgrounds */
+.dark-mode .icon-users .icon-wrapper {
+    background-color: rgba(142, 36, 170, 0.2);
+    /* Darker purple background */
+}
+
+.dark-mode .icon-users svg {
+    color: #ba68c8;
+    /* Lighter purple for better contrast */
+}
+
+.dark-mode .icon-wheat .icon-wrapper {
+    background-color: rgba(255, 152, 0, 0.2);
+    /* Darker orange background */
+}
+
+.dark-mode .icon-wheat svg {
+    color: #ffb74d;
+    /* Lighter orange for better contrast */
+}
+
+.dark-mode .icon-trending-up .icon-wrapper {
+    background-color: rgba(3, 169, 244, 0.2);
+    /* Darker blue background */
+}
+
+.dark-mode .icon-trending-up svg {
+    color: #64b5f6;
+    /* Lighter blue for better contrast */
+}
+
+.dark-mode .icon-calendar .icon-wrapper {
+    background-color: rgba(129, 199, 132, 0.2);
+    /* Darker green background */
+}
+
+.dark-mode .icon-calendar svg {
+    color: var(--primary-green-light);
+    /* Use lighter green variable */
+}
+
+/* Dark Mode - Trend Badges */
+.dark-mode .trend-positive {
+    background-color: rgba(129, 199, 132, 0.2);
+    color: var(--primary-green-light);
+}
+
+.dark-mode .trend-stable {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #b0b0b0;
+}
+
+/* Dark Mode - Text Elements */
+.dark-mode .metric-value {
+    color: var(--text-primary-dark);
+}
+
+.dark-mode .metric-label {
+    color: var(--text-secondary-dark);
+}
+
+/* Dark Mode - Statistics Container */
+.dark-mode #statistics .container {
+    background-color: var(--bg-dark);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-dark);
+}
+
+/* Dark Mode - Statistics Header */
+.dark-mode #statistics .header {
+    border-bottom: 1px solid var(--border-dark);
+}
+
+/* Dark Mode - Tabs */
+.dark-mode #statistics .tab {
+    color: var(--text-secondary-dark);
+}
+
+.dark-mode #statistics .tab.active {
+    background-color: rgba(129, 199, 132, 0.2);
+    color: var(--primary-green-light);
+}
+
+.dark-mode #statistics .tab:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Dark Mode - Chart Elements */
+.dark-mode #statistics .chart-title {
+    color: var(--text-primary-dark);
+}
+
+.dark-mode #statistics .chart-title i {
+    color: var(--text-secondary-dark);
+}
+
+/* Dark Mode - Insights */
+.dark-mode #statistics .insights {
+    border-top: 1px solid var(--border-dark);
+}
+
+.dark-mode #statistics .insights h4 {
+    color: var(--primary-green-light);
+}
+
+.dark-mode #statistics .insights li {
+    color: var(--text-secondary-dark);
+}
+
+.dark-mode #statistics .insights li::before {
+    color: var(--primary-green-light);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .metrics-container {
+        flex-direction: column;
+        gap: 16px;
+        padding: 10px;
+    }
+
+    .metric-card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .metric-value {
+        font-size: 1.75rem;
+    }
+
+    .metric-label {
+        font-size: 0.9rem;
+    }
+
+    #statistics .container {
+        margin: 0 10px;
+        padding: 20px;
+    }
+
+    #statistics .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #statistics .tab {
+        justify-content: center;
+        padding: 12px 16px;
+    }
+
+    #statistics .chart-title {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .metrics-container {
+        padding: 5px;
+    }
+
+    .metric-card {
+        padding: 16px;
+    }
+
+    .metric-value {
+        font-size: 1.5rem;
+    }
+
+    .icon-wrapper {
+        width: 40px;
+        height: 40px;
+    }
+
+    .trend-badge {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+
+    #statistics .container {
+        padding: 16px;
+    }
+
+    #statistics .chart-title {
+        font-size: 16px;
+    }
+}
+
+/* Animation for Theme Transitions */
+@media (prefers-reduced-motion: no-preference) {
+
+    .metric-card,
+    .icon-wrapper,
+    .trend-badge,
+    .metric-value,
+    .metric-label,
+    #statistics .container,
+    #statistics .tab,
+    #statistics .chart-title,
+    #statistics .insights li {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* Focus States for Accessibility */
+.metric-card:focus,
+#statistics .tab:focus {
+    outline: 2px solid var(--primary-green);
+    outline-offset: 2px;
+}
+
+.dark-mode .metric-card:focus,
+.dark-mode #statistics .tab:focus {
+    outline-color: var(--primary-green-light);
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .dark-mode .metric-card {
+        border: 2px solid var(--border-dark);
+    }
+
+    .dark-mode .trend-positive {
+        border: 1px solid var(--primary-green-light);
+    }
+
+    .dark-mode .trend-stable {
+        border: 1px solid #b0b0b0;
+    }
+}

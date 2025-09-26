@@ -1,59 +1,144 @@
+/* CSS Variables for Technology Theme Management */
+:root {
+    --primary-green: #2e7d32;
+    --primary-green-light: #81c784;
+    --primary-green-dark: #1b5e20;
+    --bg-primary-light: #ffffff;
+    --bg-primary-dark: #2d2d2d;
+    --bg-secondary-light: #f9f9f9;
+    --bg-secondary-dark: #383838;
+    --bg-accent-light: #e8f5e9;
+    --bg-accent-dark: rgba(129, 199, 132, 0.15);
+    --text-primary-light: #333;
+    --text-primary-dark: #e0e0e0;
+    --text-secondary-light: #666;
+    --text-secondary-dark: #b0b0b0;
+    --border-light: #e0e0e0;
+    --border-dark: #555;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+}
+
+/* Technology Container */
 #technology .container-technology {
-    background-color: #ffffff;
+    background-color: var(--bg-primary-light);
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px var(--shadow-light);
     padding: 24px;
     max-width: 1100px;
     width: 100%;
     text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
 }
 
+#technology .container-technology::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-green), var(--primary-green-light));
+    opacity: 0.8;
+}
+
+/* Typography */
 #technology h6 {
-    color: #2e7d32;
+    color: var(--primary-green);
     font-size: 1em;
     text-transform: uppercase;
     margin: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
 }
 
 #technology h3 {
     font-size: 2em;
-    color: #333;
+    color: var(--text-primary-light);
     margin: 10px 0;
+    transition: color 0.3s ease;
+    font-weight: 700;
 }
 
 #technology p {
-    color: #666;
+    color: var(--text-secondary-light);
     line-height: 1.6;
     max-width: 600px;
     margin: 0 auto 20px auto;
+    transition: color 0.3s ease;
+    font-size: 1.1em;
 }
 
+/* Image Styling */
 #technology .img img {
     max-width: 100%;
     height: 400px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
+#technology .img img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Technology Cards Container */
 #technology .container-technology-cards {
     display: flex;
     gap: 20px;
     text-align: left;
+    margin-top: 30px;
 }
 
+/* Individual Technology Cards */
 #technology .technology-card {
-    background-color: #f9f9f9;
+    background-color: var(--bg-secondary-light);
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
     flex: 1;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#technology .technology-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+#technology .technology-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-green), var(--primary-green-light));
+    border-radius: 12px 12px 0 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#technology .technology-card:hover::before {
+    opacity: 1;
 }
 
 #technology .technology-card h3 {
     font-size: 1.5em;
     margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--text-primary-light);
 }
 
+/* Technology Card Grid */
 #technology .tec-card-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -61,19 +146,47 @@
     margin-top: 20px;
 }
 
+/* Card Info Boxes */
 #technology .card-info {
-    background: #e8f5e9;
+    background: var(--bg-accent-light);
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(46, 125, 50, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+#technology .card-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(46, 125, 50, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+#technology .card-info:hover::before {
+    left: 100%;
+}
+
+#technology .card-info:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(46, 125, 50, 0.2);
 }
 
 #technology .card-info h4 {
     font-size: 1.8em;
     margin: 0;
-    color: #2e7d32;
+    color: var(--primary-green);
+    font-weight: 700;
+    transition: color 0.3s ease;
 }
 
+/* Future Outlook List */
 #technology .future-outlook {
     list-style: none;
     padding: 0;
@@ -83,15 +196,309 @@
 #technology .future-outlook-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 12px 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+#technology .future-outlook-item:hover {
+    background-color: rgba(46, 125, 50, 0.05);
+    padding-left: 10px;
+    border-radius: 4px;
 }
 
 #technology .future-outlook-item:last-child {
     border-bottom: none;
 }
 
+#technology .future-outlook-item::before {
+    content: '▶';
+    position: absolute;
+    left: -20px;
+    color: var(--primary-green);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+#technology .future-outlook-item:hover::before {
+    opacity: 1;
+    left: -5px;
+}
+
 #technology .future-outlook-year {
     font-weight: bold;
-    color: #2e7d32;
+    color: var(--primary-green);
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+/* ======================================
+   DARK MODE STYLES
+   ====================================== */
+
+/* Dark Mode - Main Container */
+.dark-mode #technology .container-technology {
+    background-color: var(--bg-primary-dark);
+    box-shadow: 0 4px 20px var(--shadow-dark);
+    border: 1px solid var(--border-dark);
+}
+
+.dark-mode #technology .container-technology::before {
+    background: linear-gradient(90deg, var(--primary-green-light), var(--primary-green));
+}
+
+/* Dark Mode - Typography */
+.dark-mode #technology h6 {
+    color: var(--primary-green-light);
+}
+
+.dark-mode #technology h3 {
+    color: var(--text-primary-dark);
+}
+
+.dark-mode #technology p {
+    color: var(--text-secondary-dark);
+}
+
+/* Dark Mode - Images */
+.dark-mode #technology .img img {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode #technology .img img:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Dark Mode - Technology Cards */
+.dark-mode #technology .technology-card {
+    background-color: var(--bg-secondary-dark);
+    border: 1px solid var(--border-dark);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode #technology .technology-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode #technology .technology-card::before {
+    background: linear-gradient(90deg, var(--primary-green-light), var(--primary-green));
+}
+
+.dark-mode #technology .technology-card h3 {
+    color: var(--text-primary-dark);
+}
+
+/* Dark Mode - Card Info Boxes */
+.dark-mode #technology .card-info {
+    background: var(--bg-accent-dark);
+    border: 1px solid rgba(129, 199, 132, 0.2);
+}
+
+.dark-mode #technology .card-info::before {
+    background: linear-gradient(90deg, transparent, rgba(129, 199, 132, 0.15), transparent);
+}
+
+.dark-mode #technology .card-info:hover {
+    box-shadow: 0 4px 16px rgba(129, 199, 132, 0.3);
+}
+
+.dark-mode #technology .card-info h4 {
+    color: var(--primary-green-light);
+}
+
+/* Dark Mode - Future Outlook */
+.dark-mode #technology .future-outlook-item {
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.dark-mode #technology .future-outlook-item:hover {
+    background-color: rgba(129, 199, 132, 0.1);
+}
+
+.dark-mode #technology .future-outlook-item::before {
+    color: var(--primary-green-light);
+}
+
+.dark-mode #technology .future-outlook-year {
+    color: var(--primary-green-light);
+}
+
+/* Enhanced Animations and Interactions */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#technology .card-info:hover h4 {
+    animation: pulse 1s ease-in-out;
+}
+
+/* Focus States for Accessibility */
+#technology .technology-card:focus,
+#technology .card-info:focus {
+    outline: 2px solid var(--primary-green);
+    outline-offset: 2px;
+}
+
+.dark-mode #technology .technology-card:focus,
+.dark-mode #technology .card-info:focus {
+    outline-color: var(--primary-green-light);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    #technology .container-technology {
+        padding: 20px;
+    }
+
+    #technology h3 {
+        font-size: 1.75em;
+    }
+
+    #technology p {
+        font-size: 1em;
+        max-width: 100%;
+    }
+
+    #technology .img img {
+        height: 250px;
+        margin-bottom: 20px;
+    }
+
+    #technology .container-technology-cards {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #technology .technology-card {
+        padding: 16px;
+    }
+
+    #technology .technology-card h3 {
+        font-size: 1.3em;
+    }
+
+    #technology .tec-card-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    #technology .card-info {
+        padding: 12px;
+    }
+
+    #technology .card-info h4 {
+        font-size: 1.5em;
+    }
+
+    #technology .future-outlook-item {
+        padding: 10px 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    #technology .container-technology {
+        padding: 16px;
+    }
+
+    #technology h6 {
+        font-size: 0.9em;
+    }
+
+    #technology h3 {
+        font-size: 1.5em;
+    }
+
+    #technology .img img {
+        height: 200px;
+    }
+
+    #technology .technology-card {
+        padding: 12px;
+    }
+
+    #technology .technology-card h3 {
+        font-size: 1.2em;
+    }
+
+    #technology .card-info {
+        padding: 10px;
+    }
+
+    #technology .card-info h4 {
+        font-size: 1.3em;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .dark-mode #technology .technology-card {
+        border: 2px solid var(--primary-green-light);
+    }
+
+    .dark-mode #technology .card-info {
+        border: 2px solid var(--primary-green-light);
+    }
+
+    .dark-mode #technology h3,
+    .dark-mode #technology h6 {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    #technology .container-technology,
+    #technology .technology-card,
+    #technology .card-info,
+    #technology .img img,
+    #technology .future-outlook-item {
+        transition: none;
+    }
+
+    #technology .technology-card:hover,
+    #technology .card-info:hover,
+    #technology .img img:hover {
+        transform: none;
+    }
+
+    #technology .card-info:hover h4 {
+        animation: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #technology .container-technology {
+        box-shadow: none;
+        border: 1px solid #000;
+        background: white !important;
+    }
+
+    #technology .technology-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+
+    #technology h6,
+    #technology .future-outlook-year,
+    #technology .card-info h4 {
+        color: #000 !important;
+    }
 }

@@ -1,33 +1,81 @@
+/* CSS Variables for Plants Theme Management */
+:root {
+    --primary-green: #2e7d32;
+    --primary-green-light: #81c784;
+    --primary-green-dark: #1b5e20;
+    --bg-primary-light: #ffffff;
+    --bg-primary-dark: #2d2d2d;
+    --bg-secondary-light: #f9f9f9;
+    --bg-secondary-dark: #383838;
+    --bg-accent-light: #e8f5e9;
+    --bg-accent-dark: rgba(129, 199, 132, 0.15);
+    --text-primary-light: #333;
+    --text-primary-dark: #e0e0e0;
+    --text-secondary-light: #555;
+    --text-secondary-dark: #b0b0b0;
+    --text-tertiary-light: #666;
+    --text-tertiary-dark: #999;
+    --text-muted-light: #9e9e9e;
+    --text-muted-dark: #757575;
+    --border-light: #e0e0e0;
+    --border-dark: #555;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+}
+
+/* Main Plants Container */
 #plants .container-main {
-    background-color: #ffffff;
+    background-color: var(--bg-primary-light);
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px var(--shadow-light);
     padding: 24px;
     max-width: 1000px;
     width: 100%;
     margin: 40px auto;
-    /* Added margin for visibility */
     text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
 }
 
+#plants .container-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-green), var(--primary-green-light));
+    opacity: 0.8;
+}
+
+/* Typography */
 #plants h6 {
-    color: #2e7d32;
+    color: var(--primary-green);
     font-size: 1em;
     text-transform: uppercase;
     margin: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
 }
 
 #plants h3 {
     font-size: 2em;
-    color: #333;
+    color: var(--text-primary-light);
     margin: 10px 0;
+    transition: color 0.3s ease;
+    font-weight: 700;
 }
 
 #plants p {
-    color: #666;
+    color: var(--text-tertiary-light);
     line-height: 1.6;
     max-width: 600px;
     margin: 0 auto 20px auto;
+    transition: color 0.3s ease;
+    font-size: 1.1em;
 }
 
 /* Tab List Styling */
@@ -38,24 +86,55 @@
     display: flex;
     justify-content: center;
     gap: 15px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-light);
+    transition: border-color 0.3s ease;
+    flex-wrap: wrap;
 }
 
 #plants .tab-list li {
     padding: 10px 20px;
     cursor: pointer;
     font-weight: bold;
-    color: #555;
+    color: var(--text-secondary-light);
     border-bottom: 3px solid transparent;
     transition: all 0.3s ease;
+    border-radius: 4px 4px 0 0;
+    min-width: 120px;
+    text-align: center;
+    position: relative;
 }
 
-/* Active Tab Styling - Linked to JS togglePlants function */
+#plants .tab-list li:hover {
+    background-color: rgba(46, 125, 50, 0.1);
+    color: var(--primary-green);
+    transform: translateY(-2px);
+}
+
+#plants .tab-list li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--primary-green);
+    transition: width 0.3s ease;
+}
+
+#plants .tab-list li:hover::before {
+    width: 80%;
+}
+
+/* Active Tab Styling */
 #plants .tab-list li.active {
-    color: #2e7d32;
-    border-bottom-color: #2e7d32;
-    background-color: #e8f5e9;
-    border-radius: 4px 4px 0 0;
+    color: var(--primary-green);
+    border-bottom-color: var(--primary-green);
+    background-color: var(--bg-accent-light);
+}
+
+#plants .tab-list li.active::before {
+    width: 80%;
 }
 
 /* Plant Container Grid Layout */
@@ -63,39 +142,407 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-/* Plant Card Styling (Replaces Tailwind classes from JS) */
+/* Plant Card Styling */
 .plant-card {
-    background-color: #ffffff;
-    border-radius: 8px;
+    background-color: var(--bg-primary-light);
+    border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--border-light);
     text-align: left;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
+.plant-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-green), var(--primary-green-light));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.plant-card:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.plant-card:hover::before {
+    opacity: 1;
+}
+
+/* Plant Card Content */
 .plant-card .card-title {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #2e7d32;
-    /* Green color for plant name */
+    color: var(--primary-green);
     margin-top: 0;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-left: 20px;
+}
+
+.plant-card .card-title::before {
+    content: '🌱';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1rem;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.plant-card:hover .card-title::before {
+    opacity: 1;
+    transform: scale(1.2);
 }
 
 .plant-card .card-subtitle {
     font-size: 0.875rem;
-    color: #9e9e9e;
-    margin-bottom: 10px;
+    color: var(--text-muted-light);
+    margin-bottom: 15px;
+    font-style: italic;
+    transition: color 0.3s ease;
+    padding-left: 20px;
 }
 
 .plant-card .card-details {
-    list-style: disc;
-    list-style-position: inside;
+    list-style: none;
     padding-left: 0;
     font-size: 0.875rem;
-    color: #555;
+    color: var(--text-secondary-light);
     line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.plant-card .card-details li {
+    margin-bottom: 6px;
+    padding-left: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.plant-card .card-details li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-green);
+    font-weight: bold;
+    font-size: 1.2em;
+    top: -2px;
+}
+
+.plant-card .card-details li:hover {
+    color: var(--primary-green);
+    padding-left: 25px;
+}
+
+/* ======================================
+   DARK MODE STYLES
+   ====================================== */
+
+/* Dark Mode - Main Container */
+.dark-mode #plants .container-main {
+    background-color: var(--bg-primary-dark);
+    box-shadow: 0 4px 20px var(--shadow-dark);
+    border: 1px solid var(--border-dark);
+}
+
+.dark-mode #plants .container-main::before {
+    background: linear-gradient(90deg, var(--primary-green-light), var(--primary-green));
+}
+
+/* Dark Mode - Typography */
+.dark-mode #plants h6 {
+    color: var(--primary-green-light);
+}
+
+.dark-mode #plants h3 {
+    color: var(--text-primary-dark);
+}
+
+.dark-mode #plants p {
+    color: var(--text-tertiary-dark);
+}
+
+/* Dark Mode - Tab List */
+.dark-mode #plants .tab-list {
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.dark-mode #plants .tab-list li {
+    color: var(--text-secondary-dark);
+}
+
+.dark-mode #plants .tab-list li:hover {
+    background-color: rgba(129, 199, 132, 0.1);
+    color: var(--primary-green-light);
+}
+
+.dark-mode #plants .tab-list li::before {
+    background: var(--primary-green-light);
+}
+
+.dark-mode #plants .tab-list li.active {
+    color: var(--primary-green-light);
+    border-bottom-color: var(--primary-green-light);
+    background-color: var(--bg-accent-dark);
+}
+
+/* Dark Mode - Plant Cards */
+.dark-mode .plant-card {
+    background-color: var(--bg-primary-dark);
+    border: 1px solid var(--border-dark);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .plant-card::before {
+    background: linear-gradient(90deg, var(--primary-green-light), var(--primary-green));
+}
+
+.dark-mode .plant-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark Mode - Plant Card Content */
+.dark-mode .plant-card .card-title {
+    color: var(--primary-green-light);
+}
+
+.dark-mode .plant-card .card-subtitle {
+    color: var(--text-muted-dark);
+}
+
+.dark-mode .plant-card .card-details {
+    color: var(--text-secondary-dark);
+}
+
+.dark-mode .plant-card .card-details li::before {
+    color: var(--primary-green-light);
+}
+
+.dark-mode .plant-card .card-details li:hover {
+    color: var(--primary-green-light);
+}
+
+/* Enhanced Animations */
+@keyframes growIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.plant-card {
+    animation: growIn 0.6s ease-out;
+}
+
+.plant-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.plant-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.plant-card:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.plant-card:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+@keyframes leafShake {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-2deg);
+    }
+
+    75% {
+        transform: rotate(2deg);
+    }
+}
+
+.plant-card:hover .card-title::before {
+    animation: leafShake 0.6s ease-in-out;
+}
+
+/* Focus States for Accessibility */
+#plants .tab-list li:focus,
+.plant-card:focus {
+    outline: 2px solid var(--primary-green);
+    outline-offset: 2px;
+}
+
+.dark-mode #plants .tab-list li:focus,
+.dark-mode .plant-card:focus {
+    outline-color: var(--primary-green-light);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    #plants .container-main {
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    #plants h3 {
+        font-size: 1.75em;
+    }
+
+    #plants p {
+        font-size: 1em;
+        max-width: 100%;
+    }
+
+    #plants .tab-list {
+        gap: 8px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+
+    #plants .tab-list li {
+        padding: 8px 16px;
+        min-width: 100px;
+        font-size: 0.9em;
+        white-space: nowrap;
+    }
+
+    #plants .plants-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .plant-card {
+        padding: 16px;
+    }
+
+    .plant-card .card-title {
+        font-size: 1.1rem;
+    }
+
+    .plant-card .card-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .plant-card .card-details {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #plants .container-main {
+        margin: 15px auto;
+        padding: 16px;
+    }
+
+    #plants h6 {
+        font-size: 0.9em;
+    }
+
+    #plants h3 {
+        font-size: 1.5em;
+    }
+
+    #plants .tab-list li {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+
+    #plants .plants-container {
+        gap: 12px;
+    }
+
+    .plant-card {
+        padding: 12px;
+    }
+
+    .plant-card .card-title {
+        font-size: 1rem;
+    }
+
+    .plant-card .card-subtitle {
+        font-size: 0.75rem;
+    }
+
+    .plant-card .card-details {
+        font-size: 0.75rem;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .dark-mode .plant-card {
+        border: 2px solid var(--primary-green-light);
+    }
+
+    .dark-mode .plant-card .card-title {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .dark-mode #plants .tab-list li.active {
+        border: 2px solid var(--primary-green-light);
+    }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .plant-card,
+    .plant-card .card-title::before,
+    #plants .tab-list li,
+    .plant-card .card-details li {
+        transition: none;
+        animation: none;
+    }
+
+    .plant-card:hover {
+        transform: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #plants .container-main {
+        box-shadow: none;
+        border: 1px solid #000;
+        background: white !important;
+    }
+
+    .plant-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+        background: white !important;
+    }
+
+    #plants .tab-list {
+        display: none;
+    }
+
+    .plant-card .card-title,
+    #plants h6 {
+        color: #000 !important;
+    }
 }

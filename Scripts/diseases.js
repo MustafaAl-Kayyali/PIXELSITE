@@ -204,8 +204,19 @@ function displayDiseases(diseases) {
   }
 }
 
-// Load data from the defined object on document load
+// Load data from localStorage or set it if not exists
 document.addEventListener("DOMContentLoaded", () => {
+  let storedData = JSON.parse(localStorage.getItem("diseaseData"));
+
+  if (!storedData) {
+    // If nothing in localStorage, save the default data
+    localStorage.setItem(
+      "diseaseData",
+      JSON.stringify(DISEASE_DATA.plantDiseases)
+    );
+    storedData = DISEASE_DATA.plantDiseases;
+  }
+
   // Pass the array of diseases to the display function
-  displayDiseases(DISEASE_DATA.plantDiseases);
+  displayDiseases(storedData);
 });
