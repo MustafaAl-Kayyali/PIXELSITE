@@ -42,5 +42,15 @@
         </section>
     </main>
     <script src="Scripts/cards.js"></script>
+    <script src="Scripts/nightMode.js"></script> 
+    
+    <script>
+        // Check localStorage for the saved mode and apply it if it exists.
+        const savedMode = localStorage.getItem("mode");
+        if (savedMode && window.applyStyles) {
+            window.applyStyles(savedMode);
+        }
+    </script>
+</body>
 </body>
 </html>

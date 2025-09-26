@@ -155,3 +155,92 @@ main {
 #site-search-button:hover {
     background-color: #27ae60;
 }
+
+
+
+
+/* ===============================
+   3. NIGHT MODE STYLES
+   =============================== */
+
+/* Default Colors (Light Mode) - These are your base styles */
+:root {
+    --bg-color: #f0f0f0;
+    --text-color: #333333;
+    --header-bg: #ffffff;
+    --card-bg: #ffffff;
+    --link-color: #007bff;
+    --border-color: #eeeeee;
+}
+
+/* Dark Mode Overrides */
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --header-bg: #1e1e1e;
+    --card-bg: #2d2d2d;
+    --link-color: #64b5f6; /* Lighter link color for dark background */
+    --border-color: #333333;
+}
+
+/* Apply variables across the site */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+/* Apply to major elements */
+header {
+    background-color: var(--header-bg);
+    border-bottom-color: var(--border-color);
+}
+
+header a, 
+header a:visited, 
+nav a,
+nav a:visited {
+    color: var(--text-color); /* Ensures nav links change color */
+}
+
+/* Style for cards/sections (like the info box in index.html) */
+.info, .card-items, .crops-container .card-item {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Link color adjustment */
+a, a:visited {
+    color: var(--link-color);
+}
+
+/* Search bar adjustment for night mode */
+body.dark-mode .search-bar-container {
+    background-color: var(--bg-color);
+    border-top-color: var(--border-color);
+}
+body.dark-mode #site-search-form {
+    border-color: #555;
+    box-shadow: none;
+}
+body.dark-mode #site-search-input {
+    background-color: #333333;
+    color: var(--text-color);
+}
+
+
+/* Toggle Icon Styling */
+.mode-toggle {
+    position: absolute; /* Allows precise placement */
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000; /* Keep it above other elements */
+    transition: transform 0.2s;
+}
+
+.mode-toggle:hover {
+    transform: scale(1.1);
+}

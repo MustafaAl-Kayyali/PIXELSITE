@@ -63,5 +63,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="Scripts/chart.js"></script>
 </body>
-
+<script src="Scripts/nightMode.js"></script>   
+    <script>
+        // Check localStorage for the saved mode and apply it if it exists.
+        const savedMode = localStorage.getItem("mode");
+        if (savedMode && window.applyStyles) {
+            window.applyStyles(savedMode);
+        }
+    </script>
+</body>
 </html>

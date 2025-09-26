@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
-
 <body>
     <header>
         <nav>
@@ -32,8 +31,8 @@
                 <li><a href="Diseases.html">Diseases</a></li>
             </ul>
         </nav>
+        <span id="mode-toggle-icon" class="mode-toggle" title="Toggle Light/Dark Mode">🌙</span> 
     </header>
-
     <main id="content-container">
         <section id="Home">
             <img src="https://images.alborsaanews.com/2023/05/cPMzGO9m-1684929988_935_119824_2021_4_6_13_23_1_916-jpg.webp"
@@ -74,6 +73,16 @@
     </main>
 
     <script src="Scripts/search.js"></script>
+    <script src="Scripts/nightMode.js"></script> 
+    
+    <script>
+        // Check localStorage for the saved mode and apply it if it exists.
+        const savedMode = localStorage.getItem("mode");
+        if (savedMode && window.applyStyles) {
+            window.applyStyles(savedMode);
+        }
+    </script>
+</body>
 
 </body>
 
