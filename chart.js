@@ -1,4 +1,4 @@
-// The new data structure with categories
+// The data structure remains the same
 const agricultureData = [
   {
     name: "Farming Methods",
@@ -29,41 +29,97 @@ const agricultureData = [
   },
 ];
 
-const chartContainer = document.getElementById("chart-container");
 const chartTitle = document.getElementById("chart-title-text");
 const tabs = document.querySelectorAll(".tab");
 
-// Function to render the chart for a given data set
+// Get the Chart.js canvas element
+const ctx = document.getElementById("myChart");
+let agricultureChart; // Variable to hold the chart instance
+
+// Function to convert your data structure into Chart.js format
+function formatDataForChart(data) {
+  const labels = data.map((item) => item.name);
+  const values = data.map((item) => item.value);
+  const colors = data.map((item) => item.color);
+
+  return { labels, values, colors };
+}
+
+// Function to initialize or update the Chart.js chart
 function renderChart(data) {
-  // Clear the previous chart
-  chartContainer.innerHTML = "";
+  const { labels, values, colors } = formatDataForChart(data);
 
-  // Render the new bars
-  data.forEach((item) => {
-    const barItem = document.createElement("div");
-    barItem.classList.add("bar-item");
+  // If the chart instance exists, destroy it before rendering a new one
+  if (agricultureChart) {
+    agricultureChart.destroy();
+  }
 
-    const labelDiv = document.createElement("div");
-    labelDiv.classList.add("bar-label");
-    labelDiv.innerHTML = `<span>${item.name}</span><span>${item.value}%</span>`;
-    barItem.appendChild(labelDiv);
-
-    const progressBar = document.createElement("div");
-    progressBar.classList.add("progress-bar");
-
-    const progressFill = document.createElement("div");
-    progressFill.classList.add("progress-fill");
-    progressFill.style.backgroundColor = item.color;
-    progressFill.style.width = "0%";
-
-    progressBar.appendChild(progressFill);
-    barItem.appendChild(progressBar);
-    chartContainer.appendChild(barItem);
-
-    // Animate the fill
-    setTimeout(() => {
-      progressFill.style.width = `${item.value}%`;
-    }, 200);
+  agricultureChart = new Chart(ctx, {
+    type: "bar", // Horizontal bar chart
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          data: values,
+          backgroundColor: colors,
+          borderColor: colors,
+          borderWidth: 1,
+          borderRadius: 5, // Adds rounded corners to bars
+        },
+      ],
+    },
+    options: {
+      indexAxis: "y", // Makes it a horizontal bar chart
+      responsive: true,
+      maintainAspectRatio: false, // Allows you to control the size via CSS
+      plugins: {
+        legend: {
+          display: false, // Hide the legend
+        },
+        tooltip: {
+          callbacks: {
+            label: (context) => {
+              let label = context.dataset.label || "";
+              if (label) {
+                label += ": ";
+              }
+              // Append the '%' sign to the value
+              label += context.parsed.x + "%";
+              return label;
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          max: 100,
+          min: 0,
+          ticks: {
+            display: false, // Hide X-axis ticks
+          },
+          grid: {
+            display: false, // Hide vertical grid lines
+          },
+          border: {
+            display: false,
+          },
+        },
+        y: {
+          ticks: {
+            color: "#555", // Label color
+            font: {
+              size: 14, // Adjust font size for labels
+            },
+          },
+          grid: {
+            display: false, // Hide horizontal grid lines
+          },
+          border: {
+            display: false,
+          },
+        },
+      },
+    },
   });
 }
 
