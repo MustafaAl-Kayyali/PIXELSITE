@@ -1,125 +1,115 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-body{
-    font-family: ui-sans-serif;
-}
-img {
-  border-radius: 8px;
-  max-height: 365px;
-}
-#crops{
-color:oklch(0.448 0.119 151.328);
-background-image: linear-gradient(to bottom right,
-  rgb(66, 244, 90),  
-  rgb(125, 245, 137), 
-  rgba(255, 252, 249, 0.826)
-    );
-text-align: center;
-padding: 80px ;
-}
-#plants{
-color:oklch(0.437 0.078 188.216);
-background-image: linear-gradient(to bottom right, 
-    rgb(13, 241, 233),   
-    rgb(130, 228, 217),  
-    rgb(239, 241, 244)   
-  );
-
-padding: 80px ;
-text-align: center;
+/* General Body Styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 0;
 }
 
-#diseases{
-    color: oklch(0.444 0.177 26.898);
-    padding: 80px ;
-    text-align: center;
-  }
-
-
-
-h1{
-font-size: 30px;
-}
-span{
-    display: inline-flex;
-    justify-items: center;
-    margin: 0px 0px 16px;
-    padding: 2px 8px;
-    white-space: nowrap;
-    border-radius: 20px;
-    font-size: medium;
-}
-h2{
-    font-size: 30px; 
+/* Header and Navigation */
+header {
+  background-color: #ffffff;
+  padding: 10px 40px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-h3{
- font-size: 30px;   
-}
-p{
-    font-size: 18px;
-}
-.button-container {
-  display: inline-flex;
-  background: #ECECF0;
-  border-radius: 25px;
-  padding: 3px;
-  justify-items: center;
-  margin: 0px opx 32px;
-  
-
+header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-.button-container button {
-  border: none;
-  background: transparent;
-  padding: 4px 8px;
-  border-radius: 20px;
-  font-size: 14px;
-  cursor: pointer;
-  font-weight: 600;
-  color: oklch(0.145 0 0);
+header nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* Main Content Area */
+main {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Home Section Specific Styles */
+#Home {
   display: flex;
   align-items: center;
-  gap: 6px;
-  transition: all 0.3s ease;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  max-width: 1200px;
+  overflow: hidden;
 }
 
-.button-container button.active {
-  background: #fff;
-  color: oklch(0.145 0 0);
+#Home img {
+  width: 50%;
+  object-fit: cover;
 }
 
-
-.button-container2 button{
-    background-color: #fff;
-    font-size: 14px;
-    padding: 8px 16px;
-    border-radius: 8px ;
-    border: solid red;
-
+#Home .info {
+  padding: 40px;
+  width: 50%;
 }
 
-.warning-container{
-    background-color: rgb(236, 236, 120);
-    width:100%;
-    max-height: 200px;
-
+#Home h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-.satstic-container{
-    width:100%;
-    max-height: 300px;
-    padding:32px 32px 24px;
-    color:#fff;
-    border-radius:20px;
+#Home h1 span {
+  display: block;
+  color: #2e7d32;
 }
 
-
-h4{
-    font-size: 24px;
-    margin: 0px 0px 24px;
+#Home p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30px;
 }
 
+#Home .cards {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+#Home .card-items {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  flex: 1;
+  text-align: center;
+}
+
+#Home .card-items h4 {
+  margin: 0 0 10px 0;
+  color: #2e7d32;
+}
+
+#Home .btn a.button {
+  background-color: #2e7d32;
+  color: #fff;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+#Home .btn a.button:hover {
+  background-color: #1b5e20;
+}

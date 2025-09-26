@@ -114,14 +114,13 @@ const FALLBACK_DATA = [
 
 const DISEASES_KEY = "plantDiseasesData";
 
-// to display data on the page
+// Renders the disease data into HTML cards
 function displayDiseases(data) {
   const diseasesContainer = document.getElementById("diseases-container");
 
   if (Array.isArray(data) && diseasesContainer) {
     diseasesContainer.innerHTML = data
       .map((disease) => {
-        // to display the date
         const dateDisplay = disease.date_recorded
           ? `<p><strong>Recorded Date:</strong> ${new Date(
               disease.date_recorded
@@ -132,12 +131,10 @@ function displayDiseases(data) {
             })}</p>`
           : "";
 
-        // to display the scientific name
         const scientificName = Array.isArray(disease.scientific_name)
           ? disease.scientific_name.join(", ")
           : disease.scientific_name;
 
-        // to display the affected crops
         const affectedCrops = Array.isArray(disease.affected_crops)
           ? disease.affected_crops.join(", ")
           : disease.affected_crops;
@@ -145,7 +142,7 @@ function displayDiseases(data) {
         return `<div class="disease">
           <h3>${disease.disease_name}</h3>
           ${dateDisplay}
-          <p><strong>Scientific Name:</strong> ${scientificName}</p>
+          <p><strong>Scientific Name:</strong> <em>${scientificName}</em></p>
           <p><strong>Type:</strong> ${disease.type}</p>
           <p><strong>Commonality:</strong> ${disease.commonality}</p>
           <p><strong>Affected Crops:</strong> ${affectedCrops}</p>
@@ -170,6 +167,10 @@ function displayDiseases(data) {
   }
 }
 
+/**
+ * Loads disease data exclusively from localStorage or uses fallback data.
+ * Seeds the fallback data into localStorage if it doesn't exist yet.
+ */
 function loadDiseasesData() {
   const cachedData = localStorage.getItem(DISEASES_KEY);
 
@@ -178,49 +179,27 @@ function loadDiseasesData() {
     try {
       const data = JSON.parse(cachedData);
       displayDiseases(data);
-      return;
     } catch (e) {
-      console.error("Error parsing cached data, fetching from network.", e);
+      console.error("Error parsing cached data. Using fallback data.", e);
+      displayDiseases(FALLBACK_DATA);
+    }
+  } else {
+    // 💡 NEW LOGIC: If no data is in localStorage, use the fallback data
+    // and save it to localStorage for subsequent visits (seeding the store).
+    console.log(
+      "No data found in localStorage. Using fallback data and seeding store."
+    );
+
+    displayDiseases(FALLBACK_DATA);
+
+    try {
+      localStorage.setItem(DISEASES_KEY, JSON.stringify(FALLBACK_DATA));
+      console.log("Fallback data successfully saved to localStorage.");
+    } catch (e) {
+      console.warn("Could not save fallback data to localStorage:", e);
     }
   }
-
-  console.log("Fetching data from the network.");
-  fetch("data.json")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(
-          `HTTP error! Status: ${response.status} (File not found or network issue)`
-        );
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log("Data fetched successfully.");
-
-      try {
-        localStorage.setItem(DISEASES_KEY, JSON.stringify(data));
-      } catch (e) {
-        console.warn("Could not save data to localStorage:", e);
-      }
-      displayDiseases(data);
-    })
-    .catch((error) => {
-      console.error("Fetch failed. Using fallback data:", error.message);
-
-      displayDiseases(FALLBACK_DATA);
-
-      const diseasesContainer = document.getElementById("diseases-container");
-      if (diseasesContainer) {
-        const errorMessage = error.message.includes("Failed to fetch")
-          ? "Connection failed. Displaying cached/temporary data."
-          : `An error occurred: ${error.message}`;
-
-        diseasesContainer.insertAdjacentHTML(
-          "beforebegin",
-          `<p style="color: red; text-align: center;">${errorMessage}</p>`
-        );
-      }
-    });
 }
 
+// Initial call to load data when the script runs
 loadDiseasesData();
