@@ -81,6 +81,7 @@ function renderMetrics() {
                             <span class="trend-badge ${trendClass}">
                                 ${item.trend}
                             </span>
+                            
                         </div>
 
                         <!-- Value and Label -->
