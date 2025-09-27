@@ -22,18 +22,22 @@
 }
 
 /* --- Global Container Styling --- */
+/* Main Plants Container */
 #crops .container-main {
     background-color: var(--bg-primary-light);
     border-radius: 12px;
     box-shadow: 0 4px 20px var(--shadow-light);
     padding: 24px;
-    max-width: 1200px;
+    max-width: 1000px;
     width: 100%;
     margin: 40px auto;
     text-align: center;
     transition: all 0.3s ease;
     border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
 }
+
 #crops .container-main::before {
     content: '';
     position: absolute;

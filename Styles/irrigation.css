@@ -95,14 +95,24 @@ body {
 }
 
 #irrigation-systems {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 40px auto;
     padding: 20px;
+    border-radius: 12px;
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
 }
 
 .container-header {
     text-align: center;
     margin-bottom: 40px;
+    margin-top: 40px;
+    padding-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
 }
 
 .container-header h3 {

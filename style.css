@@ -184,13 +184,15 @@ main {
 /* Floating percentage */
 #progress-text {
   position: fixed;
-  top: 8px;
+  top: 28px;
   right: 12px;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(139, 136, 136, 0.7);
+  font-weight: bold;
+  border: 1px solid #2196f3;
   color: #fff;
   font-size: 12px;
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: 14px;
   z-index: 1001;
   transition: all 0.3s ease;
 }
