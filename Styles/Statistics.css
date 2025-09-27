@@ -15,20 +15,24 @@
 }
 
 /* Metrics Container */
-.metrics-container {
+/* Metrics Container — keep as is, but ensure centering */
+/* Default: Mobile-first (1 card per line) */
+#metrics-container {
     max-width: 1200px;
     margin: 15px auto;
     padding: 10px 20px;
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 24px;
     transition: all 0.3s ease;
 }
 
-/* Metric Cards */
 .metric-card {
-    flex-shrink: 0;
-    width: 280px;
+    flex: 1 1 100%;
+    /* Full width on mobile */
+    max-width: 500px;
+    /* Cap max width */
     background-color: var(--bg-light);
     border-radius: 12px;
     padding: 24px;
@@ -40,6 +44,14 @@
     border: 1px solid transparent;
 }
 
+/* Tablet & Desktop: 2 cards per line */
+@media (min-width: 769px) {
+    .metric-card {
+        flex: 1 1 calc(50% - 12px);
+        /* 2 per row */
+        max-width: 280px;
+    }
+}
 .metric-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);

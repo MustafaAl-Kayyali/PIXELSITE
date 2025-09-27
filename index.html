@@ -1,93 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jordan's Food Security</title>
 
-    <link rel="stylesheet" href="style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriGrow Dashboard - Animated Farm Management</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="Styles/Animation-style.css">
+</head>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  </head>
-
-  <body>
-<div id="progress-container">
-<div id="scroll-progress-bar"></div>
-</div>
-<div id="progress-text">0%</div>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="index.html" title="Go to Home section">Home</a></li>
-          <li><a href="Statistics.html">Statistics</a></li>
-          <li>
-            <a href="Irrigration.html" title="Go to Irrigation section"
-              >Irrigation</a
-            >
-          </li>
-          <li><a href="Crops.html">Crops</a></li>
-          <li><a href="Plants.html">Plants</a></li>
-          <li>
-            <a href="Technology.html" title="Go to Technology section"  >Technology</a>
-          </li>
-          <li><a href="Diseases.html">Diseases</a></li>
-                          <button id="mode-toggle-icon" class="mode-icon">🌙</button>
-        </ul>
-      </nav>
-    </header>
-
-    <main id="content-container">
-      <section id="Home">
-        <img
-          src="https://images.alborsaanews.com/2023/05/cPMzGO9m-1684929988_935_119824_2021_4_6_13_23_1_916-jpg.webp"
-          alt="A landscape view of agricultural farms in Jordan."
-        />
-        <div class="info">
-          <h1>
-            Jordan's Food Security<span> Challenge &amp; Innovation</span>
-          </h1>
-          <p>
-            Explore the current state of Jordan's agriculture, from traditional
-            farming methods to cutting-edge vertical farming technologies.
-            Discover how innovation is addressing food security challenges in
-            the Kingdom.
-          </p>
-          <div class="cards">
-            <div class="card-items" id="agricultural-growth">
-              <h4>Agricultural Growth</h4>
-              <p>Sustainable farming initiatives</p>
+<body>
+    <div id="dashboard-container">
+        <div id="farm-scene">
+            <div id="sun">☀️</div>
+            <div id="cloud">☁️</div>
+            <div id="soil"></div>
+            <div id="crop-growth-area">
+                <div class="crop-plant" data-plant-id="1" title="Click to grow!">🌱</div>
+                <div class="crop-plant" data-plant-id="2" title="Click to grow!">🌱</div>
             </div>
-            <div class="card-items" id="water-management">
-              <h4>Water Management</h4>
-              <p>Advanced irrigation systems</p>
+            <div id="water-pipe">
+                <div id="water-flow" title="Click for water boost!">💧</div>
             </div>
-            <div class="card-items" id="crop-innovation">
-              <h4>Crop innovation</h4>
-              <p>Diverse agricultural products</p>
-            </div>
-          </div>
-          <div class="search-bar-container">
-            <form id="site-search-form">
-                <input type="text" id="site-search-input" placeholder="Search for crops or plants (e.g., Iris, Tomato)...">
-                <button type="submit" id="site-search-button" title="Search">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-        </div>
-        <br>
-       <br>
-          <div class="btn">
-            <a href="Irrigration.html" class="button">Learn More</a>
-          </div>
         </div>
-      </section>
-    </main>
-    <script src="Scripts/dark-ligth.js"></script>
-    <script src="Scripts/presentage.js"></script>
-    <script src="search.js"></script>
-  </body>
+
+        <div id="data-panel">
+            <h2>Farm Statistics</h2>
+            <div class="stat-card" id="soil-moisture">
+                <h3>💧 Soil Moisture</h3>
+                <div class="data-bar" data-value="85"></div>
+                <span class="value">85%</span>
+            </div>
+            <div class="stat-card" id="crop-progress">
+                <h3>🌱 Growth Progress (Day 12)</h3>
+                <div class="data-bar" data-value="45"></div>
+                <span class="value">45% Complete</span>
+            </div>
+            <button type="button" id="simulate-rain">Simulate Rain</button>
+        </div>
+    </div>
+
+    <script src="Scripts/Animation-script.js"></script>
+</body>
+
 </html>
