@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriGrow Dashboard - Animated Farm Management</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="Styles/Animation-style.css">
+</head>
+
+<body>
+    <div id="dashboard-container">
+        <div id="farm-scene">
+            <div id="sun">☀️</div>
+            <div id="cloud">☁️</div>
+            <div id="soil"></div>
+            <div id="crop-growth-area">
+                <div class="crop-plant" data-plant-id="1" title="Click to grow!">🌱</div>
+                <div class="crop-plant" data-plant-id="2" title="Click to grow!">🌱</div>
+            </div>
+            <div id="water-pipe">
+                <div id="water-flow" title="Click for water boost!">💧</div>
+            </div>
+        </div>
+
+        <div id="data-panel">
+            <h2>Farm Statistics</h2>
+            <div class="stat-card" id="soil-moisture">
+                <h3>💧 Soil Moisture</h3>
+                <div class="data-bar" data-value="85"></div>
+                <span class="value">85%</span>
+            </div>
+            <div class="stat-card" id="crop-progress">
+                <h3>🌱 Growth Progress (Day 12)</h3>
+                <div class="data-bar" data-value="45"></div>
+                <span class="value">45% Complete</span>
+            </div>
+            <button type="button" id="simulate-rain">Simulate Rain</button>
+        </div>
+    </div>
+
+    <script src="Scripts/Animation-script.js"></script>
+</body>
+
+</html>

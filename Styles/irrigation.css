@@ -1,0 +1,440 @@
+/* --- Dark Mode Variables --- */
+:root {
+    /* Light mode colors */
+    --bg-main: #eef2f5;
+    --bg-card: #ffffff;
+    --text-primary: #333;
+    --text-secondary: #555;
+    --text-muted: #666;
+    --border-color: #e0e0e0;
+    --border-transparent: transparent;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-medium: rgba(0, 0, 0, 0.2);
+    --accent-green: #1a5620;
+    --accent-red: #b71c1c;
+    --button-bg: #f7f7f7;
+    --button-hover: #eee;
+    --button-border: #ccc;
+
+    /* Card theme colors */
+    --blue-theme: #e3f2fd;
+    --green-theme: #e8f5e9;
+    --purple-theme: #f3e5f5;
+    --amber-theme: #fff8e1;
+}
+
+[data-theme="dark"] {
+    /* Dark mode colors */
+    --bg-main: #121212;
+    --bg-card: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --text-muted: #9e9e9e;
+    --border-color: #333333;
+    --border-transparent: transparent;
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.5);
+    --accent-green: #4caf50;
+    --accent-red: #ef5350;
+    --button-bg: #2d2d2d;
+    --button-hover: #3a3a3a;
+    --button-border: #555;
+
+    /* Card theme colors - darker versions */
+    --blue-theme: #1a237e;
+    --green-theme: #1b5e20;
+    --purple-theme: #4a148c;
+    --amber-theme: #e65100;
+}
+
+/* --- Dark Mode Toggle Button --- */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    color: var(--text-primary);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+.theme-toggle::before {
+    content: "🌙";
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .theme-toggle::before {
+    content: "☀";
+}
+
+/* --- Base Transitions --- */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- General Page Structure --- */
+body {
+    background-color: var(--bg-main);
+    font-family: Arial, sans-serif;
+    color: var(--text-primary);
+}
+
+#irrigation-systems {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.container-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.container-header h3 {
+    color: var(--accent-green);
+    font-size: 2em;
+    margin: 10px 0;
+}
+
+.container-header p {
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ---------------------------------------------------------------- */
+/* --- 1. IRRIGATION SYSTEM CARDS (Drip, Sprinkler, etc.) STYLES --- */
+/* ---------------------------------------------------------------- */
+
+/* --- Grid Layout (Ensures two cards per row on large screens) --- */
+.irrigation-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* --- Individual Card Styling (Base) --- */
+.irrigation-card {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    border: 1px solid var(--border-transparent);
+    transition: all 0.3s ease;
+}
+
+.irrigation-card h3 {
+    font-size: 1.5em;
+    color: var(--text-primary);
+    margin-top: 0;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.irrigation-card p {
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin: 5px 0;
+}
+
+/* --- Data Badge Styling (For dynamically generated cards) --- */
+.data-badges {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 0 10px;
+    flex-wrap: wrap;
+    font-size: 1em;
+}
+
+.badge {
+    font-weight: normal;
+    color: var(--text-secondary);
+}
+
+.badge strong {
+    font-weight: bold;
+    color: var(--accent-green);
+    margin-right: 3px;
+}
+
+/* --- Color Themeing (Backgrounds for individual cards) --- */
+.irrigation-card.blue {
+    background-color: var(--blue-theme);
+}
+
+.irrigation-card.green {
+    background-color: var(--green-theme);
+}
+
+.irrigation-card.purple {
+    background-color: var(--purple-theme);
+}
+
+.irrigation-card.amber {
+    background-color: var(--amber-theme);
+}
+
+/* Dark mode specific adjustments for themed cards */
+[data-theme="dark"] .irrigation-card.blue,
+[data-theme="dark"] .irrigation-card.green,
+[data-theme="dark"] .irrigation-card.purple,
+[data-theme="dark"] .irrigation-card.amber {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .irrigation-card.blue p,
+[data-theme="dark"] .irrigation-card.green p,
+[data-theme="dark"] .irrigation-card.purple p,
+[data-theme="dark"] .irrigation-card.amber p {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .irrigation-card.blue .badge,
+[data-theme="dark"] .irrigation-card.green .badge,
+[data-theme="dark"] .irrigation-card.purple .badge,
+[data-theme="dark"] .irrigation-card.amber .badge {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .irrigation-card.blue .badge strong,
+[data-theme="dark"] .irrigation-card.green .badge strong,
+[data-theme="dark"] .irrigation-card.purple .badge strong,
+[data-theme="dark"] .irrigation-card.amber .badge strong {
+    color: #ffffff;
+}
+
+/* Style for the "View/Hide Details" button */
+.toggle-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid var(--button-border);
+    border-radius: 6px;
+    background-color: var(--button-bg);
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--text-primary);
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.toggle-btn:hover {
+    background-color: var(--button-hover);
+}
+
+/* --- Details Section Styling --- */
+.details-container {
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 20px;
+}
+
+.details-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 15px 0;
+}
+
+.details-container ul li {
+    padding: 5px 0;
+    font-size: 0.95em;
+    color: var(--text-secondary);
+}
+
+.advantages-label {
+    color: var(--accent-green) !important;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.challenges-label {
+    color: var(--accent-red) !important;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Custom bullet points for advantages/challenges */
+.advantages-list li::before {
+    content: "✅";
+    margin-right: 8px;
+}
+
+.challenges-list li::before {
+    content: "❌";
+    margin-right: 8px;
+}
+
+.container-diseases img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    border-radius: 12px;
+}
+
+/* ---------------------------------------------------------------- */
+/* --- 2. WATER CONSERVATION IMPACT BANNER (Gradient Section) STYLES --- */
+/* ---------------------------------------------------------------- */
+
+/* Apply the gradient and general style to the main container */
+.irrigation-cards {
+    background: linear-gradient(to right, #007bff, #00b8e9, #00cc99, #00a857);
+    color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 30px var(--shadow-medium);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Dark mode gradient adjustment */
+[data-theme="dark"] .irrigation-cards {
+    background: linear-gradient(to right, #0056b3, #008fb8, #00996b, #007a3d);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Style for the title and description block */
+.irrigation-card-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.irrigation-card-title h3 {
+    font-size: 2.2em;
+    font-weight: bold;
+    margin: 0;
+    color: white;
+}
+
+.irrigation-card-title p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: white;
+    opacity: 0.9;
+}
+
+/* Container for the three metric cards (40%, 25%, 60%) */
+.irrigation-card-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 30px 20px 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 20px;
+}
+
+/* Individual metric style within the banner */
+.irrigation-card-details .irrigation-card {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    gap: 5px;
+}
+
+.irrigation-card-details .irrigation-card h4 {
+    font-size: 3.5em;
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 0;
+    color: white;
+}
+
+.irrigation-card-details .irrigation-card p {
+    font-size: 1.2em;
+    font-weight: normal;
+    margin: 0;
+    color: white;
+    opacity: 0.8;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .theme-toggle::before {
+        font-size: 14px;
+    }
+
+    .irrigation-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Media query for mobile responsiveness */
+@media (max-width: 600px) {
+    .irrigation-card-details {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .irrigation-card-details .irrigation-card h4 {
+        font-size: 3em;
+    }
+}
+
+/* --- Scrollbar Styling --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* --- Focus Styles for Accessibility --- */
+.theme-toggle:focus,
+.toggle-btn:focus {
+    outline: 2px solid var(--accent-green);
+    outline-offset: 2px;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Styles/plants.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="progress-container">
+        <div id="scroll-progress-bar"></div>
+    </div>
+    <div id="progress-text">0%</div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html" title="Go to Home section">Home</a></li>
+                <li><a href="Statistics.html">Statistics</a></li>
+                <li><a href="Irrigration.html" title="Go to Irrigation section">Irrigation</a></li>
+                <li><a href="Crops.html">Crops</a></li>
+                <li><a href="Plants.html">Plants</a></li>
+                <li><a href="Technology.html" title="Go to Technology section">Technology</a></li>
+                <li><a href="Diseases.html">Diseases</a></li>
+                <button id="mode-toggle-icon" class="mode-icon">🌙</button>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content-container">
+                <section id="plants">
+                    <div class="container-main">
+                        <h6>Plant Biodiversity</h6>
+                        <h3>Jordan's Native Flora</h3>
+                        <p>Discover the rich diversity of native plants found across Jordan's ecosystems, from common herbs to
+                            rare endemic species requiring conservation efforts.</p>
+
+                        <ul class="tab-list">
+                            <li id="common-plants-btn" class="active">Common Plants</li>
+                            <li id="rare-plants-btn">Rare &amp; Protected Plants</li>
+                        </ul>
+
+                        <div id="common-plants-container" class="plants-container">
+                        </div>
+                        <div id="rare-plants-container" class="plants-container" style="display: none;">
+                        </div>
+                    </div>
+                </section>
+
+    </main>
+ <script src="Scripts/plants.js"></script>
+ <script src="Scripts/presentage.js"></script>
+ <script src="Scripts/search.js"></script>
+
+ <footer class="footer">
+        <div class="footer-container">
+            <p>Jordan's Food Security Initiative - Committed to sustainable agriculture and food security.</p>
+            <p>For inquiries and feedback, <a href="contactUs.html" class="contact-link">Contact Us</a></p>
+            <p class="copyright">&copy; 2024 Jordan's Food Security. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

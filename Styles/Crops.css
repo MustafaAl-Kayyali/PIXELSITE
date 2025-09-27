@@ -1,0 +1,425 @@
+/* CSS Variables for Theme Management */
+:root {
+    --primary-green: #2e7d32;
+    --primary-green-light: #81c784;
+    --primary-green-dark: #1b5e20;
+    --bg-primary-light: #ffffff;
+    --bg-primary-dark: #2d2d2d;
+    --bg-secondary-light: #f8f9fa;
+    --bg-secondary-dark: #383838;
+    --text-primary-light: #333;
+    --text-primary-dark: #e0e0e0;
+    --text-secondary-light: #555;
+    --text-secondary-dark: #b0b0b0;
+    --text-muted-light: #666;
+    --text-muted-dark: #999;
+    --border-light: #e0e0e0;
+    --border-dark: #555;
+    --border-accent-light: #c8e6c9;
+    --border-accent-dark: rgba(129, 199, 132, 0.3);
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+}
+
+/* --- Global Container Styling --- */
+#crops .container-main {
+    background-color: var(--bg-primary-light);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px var(--shadow-light);
+    padding: 24px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 40px auto;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+#crops h3 {
+    font-size: 2em;
+    color: var(--text-primary-light);
+    margin: 10px 0;
+    transition: color 0.3s ease;
+}
+
+/* --- Tab List Styling --- */
+#crops .tab-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    border-bottom: 1px solid var(--border-light);
+    transition: border-color 0.3s ease;
+    flex-wrap: wrap;
+}
+
+#crops .tab-list li {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--text-secondary-light);
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    border-radius: 4px 4px 0 0;
+    min-width: 120px;
+    text-align: center;
+}
+
+#crops .tab-list li:hover {
+    background-color: rgba(46, 125, 50, 0.1);
+    color: var(--primary-green);
+}
+
+/* Active Tab Styling - Controlled by JS */
+#crops .tab-list li.active {
+    color: var(--primary-green);
+    border-bottom-color: var(--primary-green);
+    background-color: #e8f5e9;
+}
+
+/* --- Crop Container Grid Layout --- */
+.crops-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* --- Individual Crop Card Styling --- */
+.card-item {
+    background-color: var(--bg-primary-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border: 1px solid var(--border-accent-light);
+    text-align: left;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-green), var(--primary-green-light));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card-item:hover::before {
+    opacity: 1;
+}
+
+.card-item h3 {
+    color: var(--primary-green-dark);
+    font-size: 1.4em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.card-item .description {
+    font-style: italic;
+    color: var(--text-muted-light);
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+    line-height: 1.4;
+}
+
+/* List Styling for Crop Data */
+.card-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-item ul li {
+    font-size: 1em;
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--border-light);
+    color: var(--text-primary-light);
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 10px;
+}
+
+.card-item ul li:last-child {
+    border-bottom: none;
+}
+
+.card-item ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--primary-green);
+    font-size: 0.8em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.card-item ul li b {
+    color: var(--primary-green-dark);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+/* ======================================
+   DARK MODE STYLES
+   ====================================== */
+
+/* Dark Mode - Global Container */
+.dark-mode #crops .container-main {
+    background-color: var(--bg-primary-dark);
+    box-shadow: 0 4px 20px var(--shadow-dark);
+    border: 1px solid var(--border-dark);
+}
+
+.dark-mode #crops h3 {
+    color: var(--text-primary-dark);
+}
+
+/* Dark Mode - Tab List */
+.dark-mode #crops .tab-list {
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.dark-mode #crops .tab-list li {
+    color: var(--text-secondary-dark);
+}
+
+.dark-mode #crops .tab-list li:hover {
+    background-color: rgba(129, 199, 132, 0.1);
+    color: var(--primary-green-light);
+}
+
+.dark-mode #crops .tab-list li.active {
+    color: var(--primary-green-light);
+    border-bottom-color: var(--primary-green-light);
+    background-color: rgba(129, 199, 132, 0.15);
+}
+
+/* Dark Mode - Crop Cards */
+.dark-mode .card-item {
+    background-color: var(--bg-primary-dark);
+    border: 1px solid var(--border-accent-dark);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .card-item:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .card-item::before {
+    background: linear-gradient(90deg, var(--primary-green-light), var(--primary-green));
+}
+
+.dark-mode .card-item h3 {
+    color: var(--primary-green-light);
+}
+
+.dark-mode .card-item .description {
+    color: var(--text-muted-dark);
+}
+
+/* Dark Mode - List Items */
+.dark-mode .card-item ul li {
+    border-bottom: 1px dotted var(--border-dark);
+    color: var(--text-primary-dark);
+}
+
+.dark-mode .card-item ul li::before {
+    color: var(--primary-green-light);
+}
+
+.dark-mode .card-item ul li b {
+    color: var(--primary-green-light);
+}
+
+/* Enhanced Accessibility and Interaction */
+.card-item ul li:hover {
+    background-color: rgba(46, 125, 50, 0.05);
+    padding-left: 15px;
+}
+
+.dark-mode .card-item ul li:hover {
+    background-color: rgba(129, 199, 132, 0.1);
+}
+
+/* Focus States for Accessibility */
+#crops .tab-list li:focus,
+.card-item:focus {
+    outline: 2px solid var(--primary-green);
+    outline-offset: 2px;
+}
+
+.dark-mode #crops .tab-list li:focus,
+.dark-mode .card-item:focus {
+    outline-color: var(--primary-green-light);
+}
+
+/* Loading State Animation */
+.card-item.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.card-item.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+.dark-mode .card-item.loading::after {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    #crops .container-main {
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    #crops h3 {
+        font-size: 1.75em;
+    }
+
+    #crops .tab-list {
+        gap: 8px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+
+    #crops .tab-list li {
+        padding: 8px 16px;
+        min-width: 100px;
+        font-size: 0.9em;
+        white-space: nowrap;
+    }
+
+    .crops-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .card-item {
+        padding: 16px;
+    }
+
+    .card-item h3 {
+        font-size: 1.3em;
+    }
+
+    .card-item .description {
+        font-size: 0.85em;
+    }
+
+    .card-item ul li {
+        padding: 6px 0 6px 10px;
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    #crops .container-main {
+        margin: 15px auto;
+        padding: 16px;
+    }
+
+    #crops h3 {
+        font-size: 1.5em;
+    }
+
+    #crops .tab-list li {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+
+    .card-item {
+        padding: 12px;
+    }
+
+    .card-item h3 {
+        font-size: 1.2em;
+    }
+
+    .card-item .description {
+        font-size: 0.8em;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .dark-mode .card-item {
+        border: 2px solid var(--primary-green-light);
+    }
+
+    .dark-mode .card-item h3 {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .dark-mode #crops .tab-list li.active {
+        border: 2px solid var(--primary-green-light);
+    }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .card-item,
+    .card-item::before,
+    #crops .tab-list li,
+    .card-item ul li {
+        transition: none;
+    }
+
+    .card-item:hover {
+        transform: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #crops .container-main {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+
+    .card-item {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+
+    #crops .tab-list {
+        display: none;
+    }
+}

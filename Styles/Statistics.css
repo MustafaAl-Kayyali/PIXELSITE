@@ -1,0 +1,491 @@
+/* CSS Variables for Easy Theme Management */
+:root {
+    --primary-green: #2e7d32;
+    --primary-green-light: #81c784;
+    --bg-light: #ffffff;
+    --bg-dark: #2d2d2d;
+    --text-primary-light: #333;
+    --text-primary-dark: #e0e0e0;
+    --text-secondary-light: #666;
+    --text-secondary-dark: #b0b0b0;
+    --border-light: #e0e0e0;
+    --border-dark: #555;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+}
+
+/* Metrics Container */
+/* Metrics Container — keep as is, but ensure centering */
+/* Default: Mobile-first (1 card per line) */
+#metrics-container {
+    max-width: 1200px;
+    margin: 15px auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    transition: all 0.3s ease;
+}
+
+.metric-card {
+    flex: 1 1 100%;
+    /* Full width on mobile */
+    max-width: 500px;
+    /* Cap max width */
+    background-color: var(--bg-light);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 10px var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+/* Tablet & Desktop: 2 cards per line */
+@media (min-width: 769px) {
+    .metric-card {
+        flex: 1 1 calc(50% - 12px);
+        /* 2 per row */
+        max-width: 280px;
+    }
+}
+.metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+/* Icon Wrapper */
+.icon-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #f0fff4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* Icon Colors - Light Mode */
+.icon-users .icon-wrapper {
+    background-color: #f7ebfd;
+}
+
+.icon-users svg {
+    color: #8e24aa;
+}
+
+.icon-wheat .icon-wrapper {
+    background-color: #fffbe6;
+}
+
+.icon-wheat svg {
+    color: #ff9800;
+}
+
+.icon-trending-up .icon-wrapper {
+    background-color: #e1f5fe;
+}
+
+.icon-trending-up svg {
+    color: #03a9f4;
+}
+
+.icon-calendar .icon-wrapper {
+    background-color: #e8f5e9;
+}
+
+.icon-calendar svg {
+    color: var(--primary-green);
+}
+
+/* Trend Badge */
+.trend-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.trend-positive {
+    background-color: #e8f5e9;
+    color: var(--primary-green);
+}
+
+.trend-stable {
+    background-color: #f5f5f5;
+    color: #616161;
+}
+
+/* Value and Label Styling */
+.metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary-light);
+    margin-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.metric-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary-light);
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+/* Statistics Section */
+#statistics .container {
+    background-color: var(--bg-light);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    max-width: 800px;
+    width: 100%;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+#statistics .header {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+}
+
+#statistics .tab {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: var(--text-secondary-light);
+    transition: all 0.3s ease;
+}
+
+#statistics .tab.active {
+    background-color: #e8f5e9;
+    color: var(--primary-green);
+}
+
+#statistics .tab i {
+    margin-right: 8px;
+}
+
+#statistics .chart-section {
+    padding-bottom: 20px;
+}
+
+#statistics .chart-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--text-primary-light);
+    margin-bottom: 25px;
+    transition: color 0.3s ease;
+}
+
+#statistics .chart-title i {
+    margin-right: 10px;
+    color: var(--text-secondary-light);
+    transition: color 0.3s ease;
+}
+
+#statistics .insights {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+    transition: border-color 0.3s ease;
+}
+
+#statistics .insights h4 {
+    color: var(--primary-green);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+#statistics .insights ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#statistics .insights li {
+    position: relative;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    color: var(--text-secondary-light);
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+#statistics .insights li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-green);
+    font-size: 20px;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+/* ======================================
+   DARK MODE STYLES
+   ====================================== */
+
+/* Dark Mode - Metric Cards */
+.dark-mode .metric-card {
+    background-color: var(--bg-dark);
+    box-shadow: 0 4px 10px var(--shadow-dark);
+    border: 1px solid var(--border-dark);
+}
+
+.dark-mode .metric-card:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark Mode - Icon Wrappers with Darker Backgrounds */
+.dark-mode .icon-users .icon-wrapper {
+    background-color: rgba(142, 36, 170, 0.2);
+    /* Darker purple background */
+}
+
+.dark-mode .icon-users svg {
+    color: #ba68c8;
+    /* Lighter purple for better contrast */
+}
+
+.dark-mode .icon-wheat .icon-wrapper {
+    background-color: rgba(255, 152, 0, 0.2);
+    /* Darker orange background */
+}
+
+.dark-mode .icon-wheat svg {
+    color: #ffb74d;
+    /* Lighter orange for better contrast */
+}
+
+.dark-mode .icon-trending-up .icon-wrapper {
+    background-color: rgba(3, 169, 244, 0.2);
+    /* Darker blue background */
+}
+
+.dark-mode .icon-trending-up svg {
+    color: #64b5f6;
+    /* Lighter blue for better contrast */
+}
+
+.dark-mode .icon-calendar .icon-wrapper {
+    background-color: rgba(129, 199, 132, 0.2);
+    /* Darker green background */
+}
+
+.dark-mode .icon-calendar svg {
+    color: var(--primary-green-light);
+    /* Use lighter green variable */
+}
+
+/* Dark Mode - Trend Badges */
+.dark-mode .trend-positive {
+    background-color: rgba(129, 199, 132, 0.2);
+    color: var(--primary-green-light);
+}
+
+.dark-mode .trend-stable {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #b0b0b0;
+}
+
+/* Dark Mode - Text Elements */
+.dark-mode .metric-value {
+    color: var(--text-primary-dark);
+}
+
+.dark-mode .metric-label {
+    color: var(--text-secondary-dark);
+}
+
+/* Dark Mode - Statistics Container */
+.dark-mode #statistics .container {
+    background-color: var(--bg-dark);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-dark);
+}
+
+/* Dark Mode - Statistics Header */
+.dark-mode #statistics .header {
+    border-bottom: 1px solid var(--border-dark);
+}
+
+/* Dark Mode - Tabs */
+.dark-mode #statistics .tab {
+    color: var(--text-secondary-dark);
+}
+
+.dark-mode #statistics .tab.active {
+    background-color: rgba(129, 199, 132, 0.2);
+    color: var(--primary-green-light);
+}
+
+.dark-mode #statistics .tab:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Dark Mode - Chart Elements */
+.dark-mode #statistics .chart-title {
+    color: var(--text-primary-dark);
+}
+
+.dark-mode #statistics .chart-title i {
+    color: var(--text-secondary-dark);
+}
+
+/* Dark Mode - Insights */
+.dark-mode #statistics .insights {
+    border-top: 1px solid var(--border-dark);
+}
+
+.dark-mode #statistics .insights h4 {
+    color: var(--primary-green-light);
+}
+
+.dark-mode #statistics .insights li {
+    color: var(--text-secondary-dark);
+}
+
+.dark-mode #statistics .insights li::before {
+    color: var(--primary-green-light);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .metrics-container {
+        flex-direction: column;
+        gap: 16px;
+        padding: 10px;
+    }
+
+    .metric-card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .metric-value {
+        font-size: 1.75rem;
+    }
+
+    .metric-label {
+        font-size: 0.9rem;
+    }
+
+    #statistics .container {
+        margin: 0 10px;
+        padding: 20px;
+    }
+
+    #statistics .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #statistics .tab {
+        justify-content: center;
+        padding: 12px 16px;
+    }
+
+    #statistics .chart-title {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .metrics-container {
+        padding: 5px;
+    }
+
+    .metric-card {
+        padding: 16px;
+    }
+
+    .metric-value {
+        font-size: 1.5rem;
+    }
+
+    .icon-wrapper {
+        width: 40px;
+        height: 40px;
+    }
+
+    .trend-badge {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+
+    #statistics .container {
+        padding: 16px;
+    }
+
+    #statistics .chart-title {
+        font-size: 16px;
+    }
+}
+
+/* Animation for Theme Transitions */
+@media (prefers-reduced-motion: no-preference) {
+
+    .metric-card,
+    .icon-wrapper,
+    .trend-badge,
+    .metric-value,
+    .metric-label,
+    #statistics .container,
+    #statistics .tab,
+    #statistics .chart-title,
+    #statistics .insights li {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* Focus States for Accessibility */
+.metric-card:focus,
+#statistics .tab:focus {
+    outline: 2px solid var(--primary-green);
+    outline-offset: 2px;
+}
+
+.dark-mode .metric-card:focus,
+.dark-mode #statistics .tab:focus {
+    outline-color: var(--primary-green-light);
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .dark-mode .metric-card {
+        border: 2px solid var(--border-dark);
+    }
+
+    .dark-mode .trend-positive {
+        border: 1px solid var(--primary-green-light);
+    }
+
+    .dark-mode .trend-stable {
+        border: 1px solid #b0b0b0;
+    }
+}
